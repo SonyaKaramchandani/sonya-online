@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap'); */
+
+@font-face {
+	font-family: 'Pangaia';
+	src: url('PPPangaia-Medium.otf');
+}
+@font-face {
+	font-family: 'Air';
+	src: url('PPAir-Medium.otf');
+}
+@font-face {
+	font-family: 'Neue Montreal';
+	src: url('PPNeue-Montreal.otf');
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	color: theme('colors.text');
+	background-color: theme('colors.background');
+	font-weight: 800;
+	font-family: 'Neue Montreal', sans-serif;
+	line-height: 1.2;
+}
+
+main {
+	padding: 0 3em;
+}
+
+#canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.text-plane {
+	display: inline-block;
+	/* apply negative margins and padding to avoid chars from being cropped */
+	margin: -1.2em;
+	padding: 1.2em;
+	/* hide the original text content */
+	opacity: 0;
+}
+
+#content {
+	width: 100%;
+	padding: 2.5vw;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 2;
+	text-transform: uppercase;
+}
+
+#content > * p {
+	font-weight: 900;
+	padding: 1em 0;
+}
+
+#content h1 {
+	text-align: center;
+	margin: 25vh 0;
+	font-size: 10vw;
+	text-transform: none;
+	font-family: 'Pangaia', serif;
+	font-weight: 800;
+	line-height: 1;
+}
+
+#content h2 {
+	width: 50%;
+	margin: 15vh 0 15vh 50%;
+	font-size: 4vw;
+	font-weight: 800;
+	line-height: 1;
+}
+
+#extras {
+	margin-left: 25%;
+}
+
+#objective {
+	margin-left: 50%;
+}
+
+footer {
+	background: rgb(54, 51, 72);
+	background: linear-gradient(
+		180deg,
+		rgba(54, 51, 72, 1) 10%,
+		rgba(86, 70, 67, 1) 35%,
+		rgba(212, 146, 46, 1) 100%
+	);
+}
