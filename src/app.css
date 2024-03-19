@@ -9,10 +9,6 @@
 	src: url('PPPangaia-Medium.otf');
 }
 @font-face {
-	font-family: 'Air';
-	src: url('PPAir-Medium.otf');
-}
-@font-face {
 	font-family: 'Neue Montreal';
 	src: url('PPNeue-Montreal.otf');
 }
@@ -23,7 +19,6 @@ body {
 	height: 100%;
 	color: theme('colors.text');
 	background-color: theme('colors.background');
-	font-weight: 800;
 	font-family: 'Neue Montreal', sans-serif;
 	line-height: 1.2;
 }
@@ -47,6 +42,7 @@ main {
 	padding: 1.2em;
 	/* hide the original text content */
 	opacity: 0;
+	font-weight: 800;
 }
 
 #content {
@@ -97,4 +93,7 @@ footer {
 		rgba(86, 70, 67, 1) 35%,
 		rgba(212, 146, 46, 1) 100%
 	);
+	& a {
+		font-weight: bold;
+	}
 }

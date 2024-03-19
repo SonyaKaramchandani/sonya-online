@@ -1,6 +1,7 @@
 <script>
 	import TextBlock from '$lib/components/TextBlock.svelte';
 	import ScrollText from '$lib/components/ScrollText.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <div id="canvas"></div>
@@ -37,9 +38,11 @@
 			</p>
 			<p>
 				<span class="text-plane">
-					You can find examples of my work here. I can help you build your website from scratch,
-					perform maintainance, or help add some bells and whistles to really make it shine. To
-					collab, get in touch below.
+					You can find examples of my work here. I can help you build your website, perform
+					maintainance, or add some finishing touches to make it really shine.
+					<br />
+					<!-- TODO: arrow to footer -->
+					To collab, get in touch below.
 				</span>
 			</p>
 		</TextBlock>
@@ -47,9 +50,10 @@
 		<TextBlock id="extras">
 			<p>
 				<span class="text-plane">
-					I also volunteer with Scarborough Environmental Association, doing web development and
-					community work. When I'm not coding, you can find me on the yoga mat, rock climbing, or
-					diving into a good book.
+					In my free time, I volunteer with Scarborough Environmental Association, doing web
+					development and community work.
+					<br />
+					When I'm not coding, you can find me on the yoga mat, bouldering, or diving into a good book.
 				</span>
 			</p>
 		</TextBlock>
@@ -62,15 +66,9 @@
 				</span>
 			</p>
 			<p>
-				<span class="text-plane"> Also offering freelance web development services. </span>
+				<span class="text-plane"> Also offering freelance web development services.</span>
 			</p>
 		</TextBlock>
 	</div>
 </main>
-<footer class="py-4 px-6">
-	<TextBlock id="footer">
-		Cras hendrerit iaculis est at vestibulum. Integer tincidunt mi id metus mollis, in fermentum
-		odio sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-		curae; Phasellus in efficitur diam.
-	</TextBlock>
-</footer>
+<Footer />

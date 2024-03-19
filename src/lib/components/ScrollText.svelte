@@ -1,7 +1,27 @@
 <script lang="ts">
 	import { Curtains, Plane, ShaderPass } from 'curtainsjs';
-	import { TextTexture } from '../utils/textTexture';
 	import { onMount } from 'svelte';
+
+	let TextTexture: new (TextTexture: {
+		plane: Plane;
+		textElement: Element;
+		sampler: string;
+		resolution: number;
+		skipFontLoading: boolean; // we've already loaded the fonts
+	}) => any;
+
+	async function loadTextTexture() {
+		try {
+			const module = await import(
+				'https://gistcdn.githack.com/martinlaxenaire/549b3b01ff4bd9d29ce957edd8b56f16/raw/2f111abf99c8dc63499e894af080c198755d1b7a/TextTexture.js'
+			);
+			TextTexture = module.TextTexture;
+		} catch (error) {
+			console.error('Failed to load TextTexture:', error);
+		}
+	}
+
+	loadTextTexture();
 
 	const scrollFs = `
     #ifdef GL_FRAGMENT_PRECISION_HIGH
@@ -107,7 +127,7 @@
 			// on success
 			curtains.onSuccess(() => {
 				const fonts = {
-					list: ['normal 300 1em "Neue Montreal", sans-serif', 'normal 800 1em "Pangaia", serif'],
+					list: ['normal 800 1em "Neue Montreal", sans-serif', 'normal 800 1em "Pangaia", serif'],
 					loaded: 0
 				};
 
