@@ -94,6 +94,8 @@ footer {
 		rgba(212, 146, 46, 1) 100%
 	);
 	& a {
-		font-weight: bold;
+		font-weight: 900;
+		cursor: pointer;
+		color: theme('colors.accent');
 	}
 }
