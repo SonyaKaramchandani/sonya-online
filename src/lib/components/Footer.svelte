@@ -6,31 +6,86 @@
 
 <footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16 text-background md:text-[2vw] 2xl:text-[1.25vw]">
 	<div id="footer-contents" class="px-[4vw]">
-		<div id="breakdown" class="text-start pb-10 text-text mix-blend-lighten">
-			Designed in <a href="https://www.figma.com/">Figma</a> and coded in
-			<a href="https://code.visualstudio.com/">Visual Studio Code</a> by me. Built with
-			<a href="https://kit.svelte.dev/">SvelteKit</a>,
-			<a href="https://www.curtainsjs.com/">curtains.js</a>
-			and <a href="https://tailwindcss.com/">TailwindCSS</a>, deployed with
-			<a href="https://vercel.com/">Vercel</a>.
+		<div id="breakdown" class="text-start pb-10 text-text">
+			Designed in <a
+				href="https://www.figma.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">Figma</a
+			>
+			and coded in
+			<a
+				href="https://code.visualstudio.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">Visual Studio Code</a
+			>
+			by me. Built with
+			<a
+				href="https://kit.svelte.dev/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">SvelteKit</a
+			>,
+			<a
+				href="https://www.curtainsjs.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">curtains.js</a
+			>
+			and
+			<a
+				href="https://tailwindcss.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">TailwindCSS</a
+			>, deployed with
+			<a
+				href="https://vercel.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">Vercel</a
+			>.
 			<br />
 			<br />
 			Pangaia & Neue Montreal typefaces by
-			<a href="https://pangrampangram.com">Pangram Pangram</a>.
+			<a
+				href="https://pangrampangram.com"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="animated-underline">Pangram Pangram</a
+			>.
 		</div>
-		<div id="links-container" class="grid justify-items-start gap-x-10 pb-4 mix-blend-hard-light">
-			<div id="linkedin">
-				<IconLinkedIn style="vertical-align:text-bottom; display:inline-block" />
-				<span>LinkedIn</span>
-			</div>
-			<div id="github">
-				<IconGithub style="vertical-align:text-bottom; display:inline-block" />
-				<span>Github</span>
-			</div>
-			<div id="email">
-				<IconMail style="vertical-align:text-bottom; display:inline-block" />
-				<span>hello@sonya.dev</span>
-			</div>
+		<div id="links-container" class="pb-4 text-text">
+			<a
+				id="linkedin"
+				class="icon-text-pair animated-underline"
+				target="_blank"
+				rel="noopener noreferrer"
+				href="https://www.linkedin.com/in/sonya-k/"
+			>
+				<IconLinkedIn />LinkedIn
+			</a>
+
+			<a
+				id="github"
+				class="icon-text-pair animated-underline"
+				target="_blank"
+				rel="noopener noreferrer"
+				href="https://github.com/SonyaKaramchandani"
+			>
+				<IconGithub />GitHub
+			</a>
+
+			<a
+				id="email"
+				class="icon-text-pair animated-underline"
+				target="_blank"
+				rel="noopener noreferrer"
+				href="mailto:hello@sonya.dev"
+			>
+				<IconMail />hello@sonya.dev
+			</a>
 		</div>
 	</div>
 

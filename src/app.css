@@ -9,8 +9,30 @@
 	src: url('PPPangaia-Medium.otf');
 }
 @font-face {
+	font-family: 'Pangaia Italic';
+	src: url('PPPangaia-MediumItalic.otf');
+}
+@font-face {
 	font-family: 'Neue Montreal';
 	src: url('PPNeue-Montreal.otf');
+}
+
+html {
+	text-rendering: optimizeLegibility;
+	/* cursor: none; */
+}
+
+.custom-cursor {
+	z-index: 1000;
+	position: fixed;
+	width: 3em;
+	height: 3em;
+	border: 2px solid theme('colors.secondary');
+	border-radius: 50%;
+	pointer-events: none;
+	mix-blend-mode: exclusion;
+	transition: transform 0.1s ease-out;
+	transform: translate(-50%, -50%);
 }
 
 body {
@@ -38,8 +60,8 @@ main {
 .text-plane {
 	display: inline-block;
 	/* apply negative margins and padding to avoid chars from being cropped */
-	margin: -1.2em;
-	padding: 1.2em;
+	margin: -1em;
+	padding: 1em;
 	/* hide the original text content */
 	opacity: 0;
 	font-weight: 800;
@@ -85,6 +107,42 @@ main {
 	margin-left: 50%;
 }
 
+header {
+	a {
+		transition: all 0.5s ease-in-out;
+		line-height: 2em;
+	}
+	a:hover {
+		color: #fff;
+	}
+	& nav > #navigation {
+		a:hover {
+			letter-spacing: 0.25em;
+		}
+	}
+}
+
+.text-reflect {
+	position: relative;
+	display: inline-block;
+	transition: transform 0.75s ease-in-out;
+	&:hover {
+		transform: scaleY(-1);
+	}
+	&::after {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transform: scaleY(-1);
+		z-index: -1;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
 footer {
 	background: rgb(54, 51, 72);
 	background: linear-gradient(
@@ -93,9 +151,48 @@ footer {
 		rgba(86, 70, 67, 1) 35%,
 		rgba(212, 146, 46, 1) 100%
 	);
-	& a {
-		font-weight: 900;
-		cursor: pointer;
-		color: theme('colors.accent');
+
+	#breakdown {
+		& a {
+			cursor: pointer;
+			color: theme('colors.secondary');
+			transition: all 1s ease;
+			line-height: 1.5em;
+		}
+	}
+	#links-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.icon-text-pair {
+		display: flex;
+		align-items: center;
+		gap: 0.25em;
+		padding-bottom: 0.25em;
+		margin-bottom: 0.25em;
+	}
+}
+
+.animated-underline {
+	position: relative;
+	display: inline-block;
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+		height: 3px;
+		background: theme('colors.accent');
+		transition: transform 0.5s ease-in-out;
+		transform-origin: center bottom;
+		transform: scaleX(0);
+	}
+	&:hover {
+		mix-blend-mode: luminosity;
+	}
+	&:hover::after {
+		transform: scaleX(1);
 	}
 }

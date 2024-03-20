@@ -4,8 +4,9 @@ export default {
 	theme: {
 		extend: {},
 		fontFamily: {
-			sans: ['Arial', 'serif'],
-			serif: ['Pangaia', 'sans-serif']
+			sans: ['Neue Montreal', 'sans-serif'],
+			serif: ['Pangaia', 'serif'],
+			'serif-italic': ['Pangaia Italic', 'serif']
 		},
 		colors: {
 			text: '#C9C5C6',

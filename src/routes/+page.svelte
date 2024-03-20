@@ -1,21 +1,58 @@
-<script>
+<script lang="ts">
 	import TextBlock from '$lib/components/TextBlock.svelte';
 	import ScrollText from '$lib/components/ScrollText.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import { spring } from 'svelte/motion';
+	import { onMount } from 'svelte';
+
+	const defaultCursorSize = 40;
+	let cursorX = 0;
+	let cursorY = 0;
+	let cursorHeight = defaultCursorSize;
+	let cursorWidth = defaultCursorSize;
+	let lastMouseX = 0;
+	let lastMouseY = 0;
+	let lastTime = Date.now();
+
+	// Create spring stores for x, y positions, and height
+	let cursorXSpring = spring(cursorX, { stiffness: 0.1, damping: 0.6 });
+	let cursorYSpring = spring(cursorY, { stiffness: 0.1, damping: 0.6 });
+	let cursorHeightSpring = spring(cursorHeight, { stiffness: 0.1, damping: 0.6 });
+	let cursorWidthSpring = spring(cursorHeight, { stiffness: 0.1, damping: 0.6 });
+
+	onMount(() => {
+		// Update cursor position on mousemove
+		document.addEventListener('mousemove', (e) => {
+			const now = Date.now();
+			const deltaTime = now - lastTime;
+			const deltaX = e.clientX - lastMouseX;
+			const deltaY = e.clientY - lastMouseY;
+			const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY) / deltaTime;
+
+			cursorX = e.clientX;
+			cursorY = e.clientY;
+			cursorHeight = Math.max(defaultCursorSize, defaultCursorSize + speed * 10); // Adjust height based on speed
+			cursorWidth = Math.max(defaultCursorSize, defaultCursorSize + speed * 10); // Adjust height based on speed
+
+			cursorXSpring.set(cursorX);
+			cursorYSpring.set(cursorY);
+			cursorHeightSpring.set(cursorHeight);
+			cursorWidthSpring.set(cursorWidth);
+
+			lastMouseX = e.clientX;
+			lastMouseY = e.clientY;
+			lastTime = now;
+		});
+	});
 </script>
 
+<div
+	class="custom-cursor"
+	style="left: {$cursorXSpring}px; top: {$cursorYSpring}px; height: {$cursorHeightSpring}px; width: {$cursorWidthSpring}px"
+></div>
 <div id="canvas"></div>
-<header
-	class="fixed top-0 z-30 h-20 flex w-full py-4 px-6 md:px-12 lg:px-16 mix-blend-difference transition-transform ease-in items-center justify-between text-xl font-bold"
->
-	<a href="/">SK</a>
-	<nav class="col-span-10">
-		<div class="gap-8 justify-between flex">
-			<a href="/about"><span>About</span></a>
-			<a href="/work"><span>Work</span></a>
-		</div>
-	</nav>
-</header>
+<Header />
 <main>
 	<ScrollText />
 	<div id="content">
