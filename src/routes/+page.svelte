@@ -13,7 +13,6 @@
 	let cursorWidth = defaultCursorSize;
 	let lastMouseX = 0;
 	let lastMouseY = 0;
-	let lastTime = Date.now();
 
 	// Create spring stores for x, y positions, and height
 	let cursorXSpring = spring(cursorX, { stiffness: 0.1, damping: 0.6 });
@@ -24,16 +23,26 @@
 	onMount(() => {
 		// Update cursor position on mousemove
 		document.addEventListener('mousemove', (e) => {
-			const now = Date.now();
-			const deltaTime = now - lastTime;
 			const deltaX = e.clientX - lastMouseX;
 			const deltaY = e.clientY - lastMouseY;
-			const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY) / deltaTime;
+
+			// Determine the direction of movement
+			const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+
+			// Calculate scale based on the direction
+			const scale = isHorizontal ? Math.abs(deltaX) : Math.abs(deltaY);
 
 			cursorX = e.clientX;
 			cursorY = e.clientY;
-			cursorHeight = Math.max(defaultCursorSize, defaultCursorSize + speed * 10); // Adjust height based on speed
-			cursorWidth = Math.max(defaultCursorSize, defaultCursorSize + speed * 10); // Adjust height based on speed
+
+			// Adjust the shape based on the direction
+			if (isHorizontal) {
+				cursorHeight = Math.max(Math.round(defaultCursorSize - scale), 25);
+				cursorWidth = defaultCursorSize;
+			} else {
+				cursorHeight = defaultCursorSize;
+				cursorWidth = Math.max(Math.round(defaultCursorSize - scale), 25);
+			}
 
 			cursorXSpring.set(cursorX);
 			cursorYSpring.set(cursorY);
@@ -42,7 +51,6 @@
 
 			lastMouseX = e.clientX;
 			lastMouseY = e.clientY;
-			lastTime = now;
 		});
 	});
 </script>
@@ -50,8 +58,8 @@
 <div
 	class="custom-cursor"
 	style="left: {$cursorXSpring}px; top: {$cursorYSpring}px; height: {$cursorHeightSpring}px; width: {$cursorWidthSpring}px"
-></div>
-<div id="canvas"></div>
+/>
+<div id="canvas" />
 <Header />
 <main>
 	<ScrollText />
