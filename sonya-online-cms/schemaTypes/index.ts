@@ -7,10 +7,13 @@ import screening from './screening'
 import plotSummary from './plotSummary'
 import plotSummaries from './plotSummaries'
 import about from './about'
+import technology from './technology'
+import work from './work'
 
 export const schemaTypes = [
   // Document types
   about,
+  work,
   movie,
   person,
   screening,
@@ -21,4 +24,5 @@ export const schemaTypes = [
   plotSummaries,
   castMember,
   crewMember,
+  technology,
 ]

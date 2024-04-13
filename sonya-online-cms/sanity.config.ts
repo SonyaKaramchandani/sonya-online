@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
+import {iconPicker} from 'sanity-plugin-icon-picker'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -21,6 +22,7 @@ export default defineConfig({
   plugins: [
     structureTool(structure),
     visionTool(),
+    iconPicker(),
     // structureTool({structure}),
     //googleMapsInput(),
   ],

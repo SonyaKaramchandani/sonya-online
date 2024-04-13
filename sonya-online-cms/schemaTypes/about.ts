@@ -1,12 +1,11 @@
-import {defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+import {MdPerson as icon} from 'react-icons/md'
 
-const about = {
+const about = defineType({
   name: 'about',
   title: 'About',
   type: 'document',
-  options: {
-    singleton: true, // Identify this document as a singleton
-  },
+  icon,
   fields: [
     defineField({
       title: 'Title',
@@ -26,7 +25,12 @@ const about = {
       type: 'image',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      title: 'CV',
+      name: 'cv',
+      type: 'file',
+    }),
   ],
-}
+})
 
 export default about
