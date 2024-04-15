@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {MdWork as icon} from 'react-icons/md'
 
-const work = defineType({
+export default defineType({
   name: 'work',
   title: 'Work',
   type: 'document',
@@ -42,5 +42,3 @@ const work = defineType({
     }),
   ],
 })
-
-export default work
