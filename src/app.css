@@ -6,20 +6,15 @@
 
 @font-face {
 	font-family: 'Pangaia';
-	src: url('PPPangaia-Medium.otf');
+	src: url('static/PPPangaia-Medium.otf');
 }
 @font-face {
 	font-family: 'Pangaia Italic';
-	src: url('PPPangaia-MediumItalic.otf');
+	src: url('static/PPPangaia-MediumItalic.otf');
 }
 @font-face {
 	font-family: 'Neue Montreal';
-	src: url('PPNeue-Montreal.otf');
-}
-
-html {
-	text-rendering: optimizeLegibility;
-	/* cursor: none; */
+	src: url('static/PPNeue-Montreal.otf');
 }
 
 .custom-cursor {
@@ -60,11 +55,11 @@ main {
 .text-plane {
 	display: inline-block;
 	/* apply negative margins and padding to avoid chars from being cropped */
-	margin: -1em;
-	padding: 1em;
+	margin: -1.2em;
+	padding: 1.2em;
 	/* hide the original text content */
 	opacity: 0;
-	font-weight: 800;
+	/* font-weight: 800; */
 }
 
 #content {
@@ -73,7 +68,8 @@ main {
 	box-sizing: border-box;
 	position: relative;
 	z-index: 2;
-	text-transform: uppercase;
+	/* text-decoration: none; */
+	/* text-transform: uppercase; */
 }
 
 #content > * p {
@@ -92,7 +88,7 @@ main {
 }
 
 #content h2 {
-	width: 50%;
+	width: 25%;
 	margin: 15vh 0 15vh 50%;
 	font-size: 4vw;
 	font-weight: 800;

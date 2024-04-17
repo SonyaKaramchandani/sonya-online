@@ -44,11 +44,11 @@
 
 			// Adjust the shape based on the direction
 			if (isHorizontal) {
-				cursorHeight = Math.max(Math.round(defaultCursorSize - scale), 25);
+				cursorHeight = Math.max(Math.round(defaultCursorSize - scale), 30);
 				cursorWidth = defaultCursorSize;
 			} else {
 				cursorHeight = defaultCursorSize;
-				cursorWidth = Math.max(Math.round(defaultCursorSize - scale), 25);
+				cursorWidth = Math.max(Math.round(defaultCursorSize - scale), 30);
 			}
 
 			cursorXSpring.set(cursorX);

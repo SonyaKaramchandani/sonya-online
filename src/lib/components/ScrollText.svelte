@@ -106,65 +106,51 @@
 
 		// on success
 		curtains.onSuccess(() => {
-			const fonts = {
-				list: ['normal 800 1em "Neue Montreal", sans-serif', 'normal 800 1em "Pangaia", serif'],
-				loaded: 0
-			};
-
-			// load the fonts first
-			fonts.list.forEach((font) => {
-				document.fonts.load(font).then(() => {
-					fonts.loaded++;
-
-					if (fonts.loaded === fonts.list.length) {
-						// create our shader pass
-						const scrollPass = new ShaderPass(curtains, {
-							fragmentShader: scrollFs,
-							depth: false,
-							uniforms: {
-								scrollEffect: {
-									name: 'uScrollEffect',
-									type: '1f',
-									value: scroll.effect
-								},
-								scrollStrength: {
-									name: 'uScrollStrength',
-									type: '1f',
-									value: 2.5
-								}
-							}
-						});
-
-						// calculate the lerped scroll effect
-						scrollPass.onRender(() => {
-							scroll.lastValue = scroll.value;
-							scroll.value = curtains.getScrollValues().y;
-
-							// clamp delta
-							scroll.delta = Math.max(-30, Math.min(30, scroll.lastValue - scroll.value));
-
-							scroll.effect = curtains.lerp(scroll.effect, scroll.delta, 0.05);
-							scrollPass.uniforms.scrollEffect.value = scroll.effect;
-						});
-
-						// create our text planes
-						const textEls = document.querySelectorAll('.text-plane');
-						textEls.forEach((textEl) => {
-							const textPlane = new Plane(curtains, textEl, {
-								vertexShader: vs,
-								fragmentShader: fs
-							});
-
-							// create the text texture and... that's it!
-							const textTexture = new TextTexture({
-								plane: textPlane,
-								textElement: textPlane.htmlElement,
-								sampler: 'uTexture',
-								resolution: 1,
-								skipFontLoading: true // we've already loaded the fonts
-							});
-						});
+			// create our shader pass
+			const scrollPass = new ShaderPass(curtains, {
+				fragmentShader: scrollFs,
+				depth: false,
+				uniforms: {
+					scrollEffect: {
+						name: 'uScrollEffect',
+						type: '1f',
+						value: scroll.effect
+					},
+					scrollStrength: {
+						name: 'uScrollStrength',
+						type: '1f',
+						value: 2.5
 					}
+				}
+			});
+
+			// calculate the lerped scroll effect
+			scrollPass.onRender(() => {
+				scroll.lastValue = scroll.value;
+				scroll.value = curtains.getScrollValues().y;
+
+				// clamp delta
+				scroll.delta = Math.max(-30, Math.min(30, scroll.lastValue - scroll.value));
+
+				scroll.effect = curtains.lerp(scroll.effect, scroll.delta, 0.05);
+				scrollPass.uniforms.scrollEffect.value = scroll.effect;
+			});
+
+			// create our text planes
+			const textEls = document.querySelectorAll('.text-plane');
+			textEls.forEach((textEl) => {
+				const textPlane = new Plane(curtains, textEl, {
+					vertexShader: vs,
+					fragmentShader: fs
+				});
+
+				// create the text texture and... that's it!
+				new TextTexture({
+					plane: textPlane,
+					textElement: textPlane.htmlElement,
+					sampler: 'uTexture',
+					resolution: 1,
+					skipFontLoading: false
 				});
 			});
 		});

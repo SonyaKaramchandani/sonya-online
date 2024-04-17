@@ -17,6 +17,7 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tsconfig/svelte": "^5.0.4",
 		"@types/curtainsjs": "^8.1.3",
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -30,17 +31,23 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.7",
-		"svelte-check": "^3.6.0",
+		"svelte-check": "^3.6.9",
+		"svelte-preprocess": "^5.1.3",
 		"tailwindcss": "^3.4.1",
 		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
+		"typescript": "^5.4.5",
 		"unplugin-icons": "^0.18.5",
 		"vite": "^5.0.3",
 		"vitest": "^1.2.0"
 	},
 	"type": "module",
 	"dependencies": {
+		"@portabletext/svelte": "^2.1.11",
+		"@portabletext/types": "^2.0.13",
+		"@sanity/client": "^6.15.14",
+		"@sanity/image-url": "^1.0.2",
 		"curtainsjs": "^8.1.5",
+		"dotenv": "^16.4.5",
 		"styled-components": "^6.1.8"
 	}
 }
