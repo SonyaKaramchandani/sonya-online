@@ -4,8 +4,8 @@
 	import IconMail from 'virtual:icons/lucide/mail';
 </script>
 
-<footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16 text-background md:text-[2vw] 2xl:text-[1vw]">
-	<div id="footer-contents" class="px-[4vw]">
+<footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16 text-background md:text-[2vw]">
+	<div id="footer-contents">
 		<div id="breakdown" class="text-start pb-10 text-text">
 			Designed in <a
 				href="https://www.figma.com/"

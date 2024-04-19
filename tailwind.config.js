@@ -2,7 +2,12 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {},
+		extend: {
+			lineHeight: {
+				12: '3rem',
+				13: '3.5rem'
+			}
+		},
 		fontFamily: {
 			sans: ['Neue Montreal', 'sans-serif'],
 			serif: ['Pangaia', 'serif'],
