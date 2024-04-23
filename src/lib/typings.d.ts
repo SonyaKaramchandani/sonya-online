@@ -14,3 +14,25 @@ export interface About extends SanityBody {
 	image: string;
 	cv: string;
 }
+
+export interface Work extends SanityBody {
+	_type: 'work';
+	title: string;
+	description: PortableTextBlock[];
+	year: string;
+	roles: string[];
+	url: string;
+	image: string;
+	techstack: Technology[];
+}
+
+export interface Technology {
+	name: string;
+	icon: Icon;
+}
+
+export interface Icon {
+	provider: string;
+	name: string;
+	svg: string;
+}

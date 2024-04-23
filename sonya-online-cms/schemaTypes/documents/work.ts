@@ -22,6 +22,20 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+      description: 'Date project was completed',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'roles',
+      title: 'Roles',
+      type: 'array',
+      of: [{type: 'string'}],
+      validation: (Rule) => Rule.required().min(1).unique(),
+    }),
+    defineField({
       name: 'url',
       title: 'Url',
       type: 'url',

@@ -5,7 +5,6 @@
 	import CustomHeading from './PortableText/CustomHeading.svelte';
 	import CustomParagraph from './PortableText/CustomParagraph.svelte';
 	import CustomListItem from './PortableText/CustomListItem.svelte';
-	import CustomList from './PortableText/CustomUnorderedList.svelte';
 	import CustomUnorderedList from './PortableText/CustomUnorderedList.svelte';
 	import CustomOrderedList from './PortableText/CustomOrderedList.svelte';
 

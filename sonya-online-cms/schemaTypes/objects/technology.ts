@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {MdBuild as icon} from 'react-icons/md'
+import {preview} from 'sanity-plugin-icon-picker'
 
 export default defineType({
   name: 'technology',
@@ -15,14 +16,25 @@ export default defineType({
     }),
     defineField({
       name: 'icon',
-      title: 'Icon',
       type: 'iconPicker',
+      title: 'Icon',
       options: {
-        providers: ['f7', 'fa', 'mdi', 'sa', 'hi', 'fi', 'si'],
+        storeSvg: true,
+        providers: ['si'],
       },
     }),
   ],
   preview: {
-    select: {title: 'name', media: 'icon'},
+    select: {
+      icon: 'icon',
+      title: 'name',
+    },
+    prepare(selection) {
+      const {icon, title} = selection
+      return {
+        media: preview(icon),
+        title: title,
+      }
+    },
   },
 })
