@@ -88,8 +88,9 @@
 			</a>
 		</div>
 	</div>
-
-	<div class="font-serif font-bold text-[11.2vw] text-center mix-blend-hard-light">
-		Let's get in touch
+	<div id="footer-container">
+		<div class="font-serif font-bold text-[clamp(2rem,12vw,13vw)] text-center mix-blend-hard-light">
+			Let's get in touch
+		</div>
 	</div>
 </footer>

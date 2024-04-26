@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
+	import defaultTheme from 'tailwindcss/defaultTheme';
 
 	let cursorX = 0;
 	let cursorY = 0;
@@ -12,15 +13,14 @@
 	let cursorYSpring = spring(cursorY, { stiffness: 0.1, damping: 0.6 });
 
 	let isDesktop = false;
+	const desktop = Number.parseInt(defaultTheme.screens.lg);
 
 	onMount(() => {
-		// Check if the screen width is at least 768px (md breakpoint)
-		// TODO: use tailwind config instead
-		isDesktop = window.innerWidth >= 768;
+		isDesktop = window.innerWidth >= desktop;
 
 		// Listen for resize events to update the flag
 		window.addEventListener('resize', () => {
-			isDesktop = window.innerWidth >= 768;
+			isDesktop = window.innerWidth >= desktop;
 		});
 
 		// Update cursor position on mousemove

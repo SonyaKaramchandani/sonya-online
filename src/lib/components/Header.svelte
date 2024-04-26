@@ -1,4 +1,8 @@
-<script>
+<script lang="ts">
+	import { page } from '$app/stores';
+	let path: string;
+
+	$: path = $page.url.pathname;
 </script>
 
 <header
@@ -9,8 +13,8 @@
 	</div>
 	<nav class="col-span-10">
 		<div id="navigation" class="gap-8 justify-between flex">
-			<a href="/about" class="animated-underline"><span>About</span></a>
-			<a href="/work" class="animated-underline"><span>Work</span></a>
+			<a href="/about" class="animated-underline {path === '/about' ? 'active' : ''}">About</a>
+			<a href="/work" class="animated-underline {path === '/work' ? 'active' : ''}">Work</a>
 		</div>
 	</nav>
 </header>
