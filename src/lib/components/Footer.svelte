@@ -5,7 +5,10 @@
 </script>
 
 <footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16">
-	<div id="footer-contents" class="flex gap-20 md:gap-36 pb-10 text-[clamp(1rem,1.75vw,1.75vw)]">
+	<div
+		id="footer-contents"
+		class="flex flex-col md:flex-row gap-20 md:gap-36 pb-10 text-[clamp(1rem,1.75vw,1.75vw)]"
+	>
 		<div id="breakdown" class="text-start text-text">
 			Designed in <a
 				href="https://www.figma.com/"
@@ -83,7 +86,7 @@
 				rel="noopener noreferrer"
 				href="mailto:hello@sonya.dev"
 			>
-				<IconMail />hello@sonya.dev
+				<IconMail />hello@sonyakaram.com
 			</a>
 		</div>
 	</div>
