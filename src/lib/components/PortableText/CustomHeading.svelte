@@ -2,6 +2,9 @@
 <script lang="ts">
 	import type { BlockComponentProps } from '@portabletext/svelte';
 	import type { PortableTextBlock } from '@portabletext/types';
+	import H1 from '../Typography/h1.svelte';
+	import H2 from '../Typography/h2.svelte';
+	import H3 from '../Typography/h3.svelte';
 
 	export let portableText: BlockComponentProps;
 
@@ -9,7 +12,7 @@
 	$: ({ ptBlocks } = global);
 	$: ({ style } = value);
 
-	$: precededByHeading = ['h1', 'h2', 'h3', 'h4', 'h5'].includes(
+	$: precededByHeading = ['h1', 'h2', 'h3'].includes(
 		(ptBlocks[indexInParent - 1] as PortableTextBlock)?.style!
 	);
 
@@ -19,10 +22,10 @@
 <!-- If preceded by heading, have a higher margin top -->
 <div class="relative {precededByHeading ? 'mt-10' : 'mt-6'}" id={anchorId}>
 	{#if style === 'h1'}
-		<h1 class="text-3xl md:text-[4vw] md:leading-12"><slot /></h1>
+		<H1><slot /></H1>
 	{:else if style === 'h2'}
-		<h2 class="text-2xl md:text-[3.5vw]"><slot /></h2>
+		<H2><slot /></H2>
 	{:else}
-		<h3 class="text-xl md:text-[2.5vw]"><slot /></h3>
+		<H3><slot /></H3>
 	{/if}
 </div>

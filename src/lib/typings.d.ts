@@ -10,6 +10,7 @@ interface SanityBody {
 export interface About extends SanityBody {
 	_type: 'about';
 	title: string;
+	subtitle: string;
 	description: PortableTextBlock[];
 	image: string;
 	cv: string;

@@ -2,6 +2,7 @@
 <script lang="ts">
 	import type { BlockComponentProps } from '@portabletext/svelte';
 	import type { PortableTextBlock } from '@portabletext/types';
+	import Body from '../Typography/body.svelte';
 
 	export let portableText: BlockComponentProps;
 
@@ -16,6 +17,6 @@
 </script>
 
 <!-- If preceded by heading, have a higher margin top -->
-<div class="relative {precededByHeading ? 'mt-4' : ''}" id={anchorId}>
-	<p class="md:text-[2vw]"><slot /></p>
+<div class="relative {precededByHeading ? 'mt-10' : 'mt-6'}" id={anchorId}>
+	<Body><slot /></Body>
 </div>

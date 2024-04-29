@@ -4,9 +4,9 @@
 	import IconMail from 'virtual:icons/lucide/mail';
 </script>
 
-<footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16 text-background md:text-[2vw]">
-	<div id="footer-contents">
-		<div id="breakdown" class="text-start pb-10 text-text">
+<footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16">
+	<div id="footer-contents" class="flex gap-20 md:gap-36 pb-10 text-[clamp(1rem,1.75vw,1.75vw)]">
+		<div id="breakdown" class="text-start text-text">
 			Designed in <a
 				href="https://www.figma.com/"
 				target="_blank"
@@ -19,8 +19,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class="animated-underline">Visual Studio Code</a
-			>
-			by me. Built with
+			>. Built with
 			<a
 				href="https://kit.svelte.dev/"
 				target="_blank"
@@ -56,7 +55,7 @@
 				class="animated-underline">Pangram Pangram</a
 			>.
 		</div>
-		<div id="links-container" class="pb-4 text-text">
+		<div id="links-container" class="text-text">
 			<a
 				id="linkedin"
 				class="icon-text-pair animated-underline"
