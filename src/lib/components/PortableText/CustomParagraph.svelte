@@ -17,6 +17,6 @@
 </script>
 
 <!-- If preceded by heading, have a higher margin top -->
-<div class="relative {precededByHeading ? 'mt-10' : 'mt-6'}" id={anchorId}>
+<div class="relative {precededByHeading ? 'mt-12' : 'mt-10'}" id={anchorId}>
 	<Body><slot /></Body>
 </div>

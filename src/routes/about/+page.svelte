@@ -21,7 +21,7 @@
 					<H1>{about.title}</H1>
 				</div>
 				<!-- TODO: resize/style image -->
-				<div class="bg-background opacity-60 h-full">
+				<div class="bg-background opacity-55 h-full">
 					<img
 						src={`${about.image}?h=800&w=800&fit=min`}
 						alt="Sonya"
@@ -32,11 +32,11 @@
 					id="subheading-container"
 					class="w-full md:w-1/3 lg:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary"
 				>
-					<H2><span class="m-2">{about.subtitle}</span></H2>
+					<H2>{about.subtitle}</H2>
 				</div>
 			</div>
 			{#if about.description}
-				<div id="description-container" class="py-10 ml-[25%]">
+				<div id="description-container" class="py-10 md:ml-[25%]">
 					<RichText value={about.description} />
 				</div>
 			{/if}
