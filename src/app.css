@@ -152,7 +152,7 @@ header {
 .text-reflect {
 	position: relative;
 	display: inline-block;
-	&:hover {
+	&:hover .logo {
 		animation: rotate-btn 2s ease-in-out infinite;
 	}
 	&::after {

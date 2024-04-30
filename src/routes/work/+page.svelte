@@ -27,7 +27,7 @@
 				Tech Stack |
 				<!-- wrap in flexbox -->
 				{#each workItem.techstack as tech}
-					{@html tech.icon.svg}
+					{@html tech.icon?.svg}
 				{/each}
 			</h2>
 		{/each}

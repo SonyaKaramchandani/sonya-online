@@ -20,7 +20,7 @@ export default defineType({
       title: 'Icon',
       options: {
         storeSvg: true,
-        providers: ['si'],
+        providers: ['f7', 'fa', 'mdi', 'sa', 'hi', 'fi', 'si'],
       },
     }),
   ],
