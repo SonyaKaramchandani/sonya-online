@@ -9,8 +9,8 @@
 	let lastMouseY = 0;
 
 	// Create spring stores for x, y positions, and height
-	let cursorXSpring = spring(cursorX, { stiffness: 0.1, damping: 0.6 });
-	let cursorYSpring = spring(cursorY, { stiffness: 0.1, damping: 0.6 });
+	let cursorXSpring = spring(cursorX, { stiffness: 0.05, damping: 0.6 });
+	let cursorYSpring = spring(cursorY, { stiffness: 0.05, damping: 0.6 });
 
 	let isDesktop = false;
 	const desktop = Number.parseInt(defaultTheme.screens.lg);
@@ -25,15 +25,6 @@
 
 		// Update cursor position on mousemove
 		document.addEventListener('mousemove', (e) => {
-			const deltaX = e.clientX - lastMouseX;
-			const deltaY = e.clientY - lastMouseY;
-
-			// Determine the direction of movement
-			const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
-
-			// Calculate scale based on the direction
-			const scale = isHorizontal ? Math.abs(deltaX) : Math.abs(deltaY);
-
 			cursorX = e.clientX;
 			cursorY = e.clientY;
 
