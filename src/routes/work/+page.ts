@@ -15,7 +15,6 @@ const query = `*[_type == "work"]{
 export const load = async () => {
 	try {
 		const work: Work[] = await sanityClient.fetch(query);
-		console.log('Data', work);
 		return { work };
 	} catch (error) {
 		console.error('An error occurred:', error);

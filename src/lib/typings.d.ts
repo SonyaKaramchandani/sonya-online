@@ -19,7 +19,7 @@ export interface About extends SanityBody {
 export interface Work extends SanityBody {
 	_type: 'work';
 	title: string;
-	description: PortableTextBlock[];
+	description: string;
 	year: string;
 	roles: string[];
 	url: string;
@@ -29,7 +29,7 @@ export interface Work extends SanityBody {
 
 export interface Technology {
 	name: string;
-	icon: Icon;
+	icon?: Icon;
 }
 
 export interface Icon {
