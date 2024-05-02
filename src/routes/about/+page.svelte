@@ -21,7 +21,7 @@
 					<H1>{about.title}</H1>
 				</div>
 				<!-- TODO: resize/style image -->
-				<div class="bg-background opacity-55 h-full">
+				<div class="bg-background opacity-75 h-full">
 					<img
 						src={`${about.image}?h=800&w=800&fit=min`}
 						alt="Sonya"
@@ -30,7 +30,7 @@
 				</div>
 				<div
 					id="subheading-container"
-					class="w-full md:w-1/3 lg:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary"
+					class="w-full md:w-1/3 xl:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary"
 				>
 					<H2>{about.subtitle}</H2>
 				</div>

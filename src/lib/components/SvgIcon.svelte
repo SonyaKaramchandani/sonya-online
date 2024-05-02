@@ -21,8 +21,8 @@
 	});
 </script>
 
-<div class="text-text">
+<span>
 	{#if svgElement}
 		{@html svgElement.outerHTML.toString()}
 	{/if}
-</div>
+</span>

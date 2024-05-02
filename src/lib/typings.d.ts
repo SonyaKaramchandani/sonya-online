@@ -20,7 +20,7 @@ export interface Work extends SanityBody {
 	_type: 'work';
 	title: string;
 	description: string;
-	year: string;
+	date: string;
 	roles: string[];
 	url: string;
 	image: string;

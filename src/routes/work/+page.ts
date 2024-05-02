@@ -15,6 +15,9 @@ const query = `*[_type == "work"]{
 export const load = async () => {
 	try {
 		const work: Work[] = await sanityClient.fetch(query);
+		work.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+		// console.log(work);
 		return { work };
 	} catch (error) {
 		console.error('An error occurred:', error);
