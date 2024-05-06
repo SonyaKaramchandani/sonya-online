@@ -23,25 +23,30 @@
 				<!-- TODO: resize/style image -->
 				<article
 					id="project-container"
-					class="lg:flex relative lg:[&:not(:first-child)]:mt-[20vh] mx-auto"
+					class="group lg:flex items-center relative lg:[&:not(:first-child)]:mt-[20vh] mx-auto even:flex-row-reverse"
 				>
 					{#if project.image}
-						<div id="project-image" class="lg:w-[37.5%] relative">
+						<div id="project-image" class="lg:w-[37.5%] relative lg:flex lg:odd:justify-end">
 							<img src={project.image} alt={project.title} />
 						</div>
 					{/if}
-					<div id="project-info" class="lg:absolute lg:flex z-4 lg:left-[37.5%]">
-						<div id="project-info-inner" class="lg:pl-[3.5vw]">
+					<div
+						id="project-info"
+						class="lg:absolute lg:flex z-4 lg:group-odd:left-[37.5%] lg:group-even:right-[37.5%]"
+					>
+						<div id="project-info-inner" class="lg:odd:pl-[3.5vw] lg:odevend:pr-[3.5vw]">
 							<div
 								id="project-title-container"
-								class="lg:flex lg:no-wrap relative lg:left-[-9.5vw] w-full"
+								class="lg:flex lg:no-wrap relative lg:group-odd:left-[-7.5vw] lg:group-even:right-[-3.5vw] w-full group-even:flex-row-reverse"
 							>
-								<H2 class="text-secondary mr-10 mix-blend-exclusion w-min">
+								<H2
+									class="text-secondary group-odd:mr-10 group-even:ml-10 w-min group-even:text-end"
+								>
 									{project.title}
 								</H2>
 								<div
 									id="text-stack-container"
-									class="flex gap-4 items-center text-secondary flex-auto"
+									class="flex gap-4 items-center text-secondary flex-auto group-even:flex-row-reverse"
 								>
 									{#each project.techstack as tech}
 										{#if tech.icon}
@@ -54,16 +59,12 @@
 							</div>
 							{#if project.description}
 								<!-- TODO: pass props up from CustomParagraph Component -->
-								<Body class="lg:pt-4">{project.description}</Body>
+								<Body class="lg:pt-4 lg:text-[1.75vw]">{project.description}</Body>
+								{#if project.url}
+									<button>View Project</button>
+								{/if}
 							{/if}
 						</div>
-
-						{#if false}
-							<H3>
-								Tech Stack |
-								<!-- wrap in flexbox -->
-							</H3>
-						{/if}
 					</div>
 				</article>
 			{/each}

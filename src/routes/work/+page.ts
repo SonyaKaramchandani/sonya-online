@@ -6,6 +6,7 @@ const query = `*[_type == "work"]{
 	_type,
 	title,
 	description,
+	url,
 	roles,
 	date,
 	techstack,
