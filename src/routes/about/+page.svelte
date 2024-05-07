@@ -18,7 +18,7 @@
 		<div id="about-container" class="">
 			<div id="about-hero" class="relative">
 				<div id="heading-container" class="md:mt-10 absolute">
-					<H1>{about.title}</H1>
+					<H1 class="drop-shadow-md">{about.title}</H1>
 				</div>
 				<!-- TODO: resize/style image -->
 				<div class="bg-background opacity-75 h-full">
@@ -30,7 +30,7 @@
 				</div>
 				<div
 					id="subheading-container"
-					class="w-full md:w-1/3 xl:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary"
+					class="w-full md:w-1/3 xl:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary drop-shadow-md"
 				>
 					<H2>{about.subtitle}</H2>
 				</div>

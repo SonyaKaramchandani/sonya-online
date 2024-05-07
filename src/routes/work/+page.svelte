@@ -6,7 +6,7 @@
 	import Body from '$lib/components/Typography/body.svelte';
 	import H1 from '$lib/components/Typography/h1.svelte';
 	import H2 from '$lib/components/Typography/h2.svelte';
-	import H3 from '$lib/components/Typography/h3.svelte';
+	import Icon from '@iconify/svelte';
 
 	export let data;
 	$: work = data.work;
@@ -23,34 +23,31 @@
 				<!-- TODO: resize/style image -->
 				<article
 					id="project-container"
-					class="group lg:flex items-center relative lg:[&:not(:first-child)]:mt-[20vh] mx-auto even:flex-row-reverse"
+					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] mx-auto even:flex-row-reverse"
 				>
 					{#if project.image}
-						<div id="project-image" class="lg:w-[37.5%] relative lg:flex lg:odd:justify-end">
+						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:odd:justify-end">
 							<img src={project.image} alt={project.title} />
 						</div>
 					{/if}
-					<div
-						id="project-info"
-						class="lg:absolute lg:flex z-4 lg:group-odd:left-[37.5%] lg:group-even:right-[37.5%]"
-					>
-						<div id="project-info-inner" class="lg:odd:pl-[3.5vw] lg:odevend:pr-[3.5vw]">
+					<div id="project-info" class="lg:flex z-4 lg:w-[50%] lg:group-even:justify-end">
+						<div id="project-info-inner" class="lg:group-odd:pl-[3.5vw] lg:group-even:pr-[3.5vw]">
 							<div
 								id="project-title-container"
-								class="lg:flex lg:no-wrap relative lg:group-odd:left-[-7.5vw] lg:group-even:right-[-3.5vw] w-full group-even:flex-row-reverse"
+								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse"
 							>
 								<H2
-									class="text-secondary group-odd:mr-10 group-even:ml-10 w-min group-even:text-end"
+									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-min lg:group-even:text-end"
 								>
 									{project.title}
 								</H2>
 								<div
 									id="text-stack-container"
-									class="flex gap-4 items-center text-secondary flex-auto group-even:flex-row-reverse"
+									class="flex gap-4 items-center text-secondary flex-auto lg:group-even:flex-row-reverse flex-wrap"
 								>
 									{#each project.techstack as tech}
 										{#if tech.icon}
-											<span class="transition-transform ease-in-out duration-200 hover:scale-75">
+											<span class="transition ease-in-out duration-200 hover:scale-75">
 												<SvgIcon data={tech.icon} width="3vw" height="3vw" />
 											</span>
 										{/if}
@@ -61,7 +58,15 @@
 								<!-- TODO: pass props up from CustomParagraph Component -->
 								<Body class="lg:pt-4 lg:text-[1.75vw]">{project.description}</Body>
 								{#if project.url}
-									<button>View Project</button>
+									<a
+										href={project.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-3xl gap-2"
+									>
+										<Icon icon="ph:arrow-circle-right" width="3rem" height="3rem" inline />
+										View project
+									</a>
 								{/if}
 							{/if}
 						</div>

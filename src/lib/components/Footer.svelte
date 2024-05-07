@@ -1,7 +1,5 @@
 <script>
-	import IconLinkedIn from 'virtual:icons/lucide/linkedin';
-	import IconGithub from 'virtual:icons/lucide/github';
-	import IconMail from 'virtual:icons/lucide/mail';
+	import Icon from '@iconify/svelte';
 </script>
 
 <footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16">
@@ -66,7 +64,7 @@
 				rel="noopener noreferrer"
 				href="https://www.linkedin.com/in/sonya-k/"
 			>
-				<IconLinkedIn />LinkedIn
+				<Icon icon="lucide:linkedin" />LinkedIn
 			</a>
 
 			<a
@@ -76,7 +74,7 @@
 				rel="noopener noreferrer"
 				href="https://github.com/SonyaKaramchandani"
 			>
-				<IconGithub />GitHub
+				<Icon icon="lucide:github" />GitHub
 			</a>
 
 			<a
@@ -86,7 +84,7 @@
 				rel="noopener noreferrer"
 				href="mailto:hello@sonya.dev"
 			>
-				<IconMail />hello@sonyakaram.com
+				<Icon icon="lucide:mail" />hello@sonyakaram.com
 			</a>
 		</div>
 	</div>
