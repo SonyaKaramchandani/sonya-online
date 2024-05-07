@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
 	import { onMount } from 'svelte';
-	import defaultTheme from 'tailwindcss/defaultTheme';
 
 	let cursorX = 0;
 	let cursorY = 0;
@@ -12,15 +11,14 @@
 	let cursorXSpring = spring(cursorX, { stiffness: 0.05, damping: 0.6 });
 	let cursorYSpring = spring(cursorY, { stiffness: 0.05, damping: 0.6 });
 
-	let isDesktop = false;
-	const desktop = Number.parseInt(defaultTheme.screens.lg);
+	let isDesktopScreen: boolean;
 
-	onMount(() => {
-		isDesktop = window.innerWidth >= desktop;
-
+	onMount(async () => {
+		const ScreenUtils = await import('$lib/utils/screenUtils');
+		isDesktopScreen = ScreenUtils.isDesktop;
 		// Listen for resize events to update the flag
 		window.addEventListener('resize', () => {
-			isDesktop = window.innerWidth >= desktop;
+			isDesktopScreen = ScreenUtils.isDesktop;
 		});
 
 		// Update cursor position on mousemove
@@ -37,6 +35,6 @@
 	});
 </script>
 
-{#if isDesktop}
+{#if isDesktopScreen}
 	<div class="custom-cursor" style="left: {$cursorXSpring}px; top: {$cursorYSpring}px;" />
 {/if}
