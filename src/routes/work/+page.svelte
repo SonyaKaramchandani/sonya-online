@@ -86,7 +86,6 @@
 										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 mt-6"
 									>
 										<Icon icon="ph:arrow-circle-right-thin" width="4rem" height="4rem" inline />
-										<Icon icon="line-md:arrow-right" width="4rem" height="4rem" inline />
 										<span>View project</span>
 									</a>
 								{/if}
