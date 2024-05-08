@@ -4,8 +4,6 @@
 
 	let cursorX = 0;
 	let cursorY = 0;
-	let lastMouseX = 0;
-	let lastMouseY = 0;
 
 	// Create spring stores for x, y positions, and height
 	let cursorXSpring = spring(cursorX, { stiffness: 0.05, damping: 0.6 });
@@ -15,10 +13,10 @@
 
 	onMount(async () => {
 		const ScreenUtils = await import('$lib/utils/screenUtils');
-		isDesktopScreen = ScreenUtils.isDesktop;
-		// Listen for resize events to update the flag
+		isDesktopScreen = ScreenUtils.isDesktop();
+
 		window.addEventListener('resize', () => {
-			isDesktopScreen = ScreenUtils.isDesktop;
+			isDesktopScreen = ScreenUtils.isDesktop();
 		});
 
 		// Update cursor position on mousemove
@@ -28,9 +26,6 @@
 
 			cursorXSpring.set(cursorX);
 			cursorYSpring.set(cursorY);
-
-			lastMouseX = e.clientX;
-			lastMouseY = e.clientY;
 		});
 	});
 </script>

@@ -4,30 +4,46 @@
 	import Header from '$lib/components/Header.svelte';
 	import SvgIcon from '$lib/components/SvgIcon.svelte';
 	import Body from '$lib/components/Typography/body.svelte';
+	import Caption from '$lib/components/Typography/caption.svelte';
 	import H1 from '$lib/components/Typography/h1.svelte';
 	import H2 from '$lib/components/Typography/h2.svelte';
 	import Icon from '@iconify/svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 	$: work = data.work;
+
+	let isDesktopScreen: boolean;
+
+	onMount(async () => {
+		const ScreenUtils = await import('$lib/utils/screenUtils');
+		isDesktopScreen = ScreenUtils.isDesktop();
+
+		window.addEventListener('resize', () => {
+			isDesktopScreen = ScreenUtils.isDesktop();
+		});
+	});
+
+	// $: desktop_class = isDesktopScreen ? '3rem' : '1rem';
 </script>
 
 <Cursor />
 <Header />
+<!-- {console.log(isDesktopScreen)} -->
 <!-- TODO center all main content -->
 <main class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
-	<H1 class="mt-10">Selected Works</H1>
+	<H1 class="mt-10 drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
 		<div id="works-container" class="py-6">
 			{#each work as project}
 				<!-- TODO: resize/style image -->
 				<article
 					id="project-container"
-					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] mx-auto even:flex-row-reverse"
+					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse"
 				>
 					{#if project.image}
 						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:odd:justify-end">
-							<img src={project.image} alt={project.title} />
+							<img src={project.image} alt={project.title} class="drop-shadow-md" />
 						</div>
 					{/if}
 					<div id="project-info" class="lg:flex z-4 lg:w-[50%] lg:group-even:justify-end">
@@ -47,25 +63,31 @@
 								>
 									{#each project.techstack as tech}
 										{#if tech.icon}
-											<span class="transition ease-in-out duration-200 hover:scale-75">
-												<SvgIcon data={tech.icon} width="3vw" height="3vw" />
-											</span>
+											<div class="flex flex-col items-center">
+												<SvgIcon
+													data={tech.icon}
+													width={isDesktopScreen ? '3rem' : '2rem'}
+													height={isDesktopScreen ? '3rem' : '2rem'}
+												/>
+												<Caption class="mt-2">{tech.name}</Caption>
+											</div>
 										{/if}
 									{/each}
 								</div>
 							</div>
 							{#if project.description}
 								<!-- TODO: pass props up from CustomParagraph Component -->
-								<Body class="lg:pt-4 lg:text-[1.75vw]">{project.description}</Body>
+								<Body class="lg:pt-4">{project.description}</Body>
 								{#if project.url}
 									<a
 										href={project.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-3xl gap-2"
+										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 mt-6"
 									>
-										<Icon icon="ph:arrow-circle-right" width="3rem" height="3rem" inline />
-										View project
+										<Icon icon="ph:arrow-circle-right-thin" width="4rem" height="4rem" inline />
+										<Icon icon="line-md:arrow-right" width="4rem" height="4rem" inline />
+										<span>View project</span>
 									</a>
 								{/if}
 							{/if}

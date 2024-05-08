@@ -226,13 +226,14 @@ footer {
 	}
 	&.thin {
 		&::after {
-			height: 0.1em;
+			height: 0.05em;
 		}
 	}
 	&:hover {
 		mix-blend-mode: luminosity;
 	}
 	&:hover::after {
+		bottom: -2px;
 		transform: scaleX(1);
 	}
 }

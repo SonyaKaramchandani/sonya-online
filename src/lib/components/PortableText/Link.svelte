@@ -4,6 +4,6 @@
 	export let portableText: MarkComponentProps<{ href: string }>;
 </script>
 
-<a class="animated-underline thin text-strong" href={portableText.value.href} target="_blank">
+<a class="animated-underline text-strong" href={portableText.value.href} target="_blank">
 	<slot />
 </a>

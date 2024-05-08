@@ -1,23 +1,29 @@
 <script lang="ts">
 	import type { Icon } from '$lib/typings';
-	import { onMount } from 'svelte';
+	import { afterUpdate } from 'svelte';
 
 	export let data: Icon;
 	export let width = '1rem';
 	export let height = '1rem';
 
+	let className = '';
+
+	export { className as class };
+
 	let svgElement: HTMLElement;
 
-	onMount(() => {
+	afterUpdate(() => {
 		// Parse the SVG string into a DOM element
 		const parser = new DOMParser();
 		const svgDoc = parser.parseFromString(data.svg, 'image/svg+xml');
 		svgElement = svgDoc.documentElement;
 
-		// Manipulate properties of the SVG element
 		svgElement.setAttribute('width', width);
 		svgElement.setAttribute('height', height);
 		svgElement.removeAttribute('style');
+		// Manipulate properties of the SVG element
+		svgElement.removeAttribute('style');
+		svgElement.setAttribute('path', className);
 	});
 </script>
 
