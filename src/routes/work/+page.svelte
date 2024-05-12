@@ -7,7 +7,7 @@
 	import Caption from '$lib/components/Typography/caption.svelte';
 	import H1 from '$lib/components/Typography/h1.svelte';
 	import H2 from '$lib/components/Typography/h2.svelte';
-	import Icon from '@iconify/svelte';
+	import IconifyIcon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 
 	export let data;
@@ -32,14 +32,14 @@
 <!-- {console.log(isDesktopScreen)} -->
 <!-- TODO center all main content -->
 <main class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
-	<H1 class="mt-10 drop-shadow-md">Selected Works</H1>
+	<H1 class="lg:mt-10 drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
 		<div id="works-container" class="py-6">
 			{#each work as project}
 				<!-- TODO: resize/style image -->
 				<article
 					id="project-container"
-					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse"
+					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse max-lg:[&:not(:first-child)]:mt-[10vh] max-lg:[&(:first-child)]:mt-[5vh]"
 				>
 					{#if project.image}
 						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:odd:justify-end">
@@ -50,16 +50,16 @@
 						<div id="project-info-inner" class="lg:group-odd:pl-[3.5vw] lg:group-even:pr-[3.5vw]">
 							<div
 								id="project-title-container"
-								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse"
+								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse items-center max-lg:my-4"
 							>
 								<H2
-									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-min lg:group-even:text-end"
+									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-min lg:group-even:text-end max-lg:my-6"
 								>
 									{project.title}
 								</H2>
 								<div
 									id="text-stack-container"
-									class="flex gap-4 items-center text-secondary flex-auto lg:group-even:flex-row-reverse flex-wrap"
+									class="flex gap-4 items-center text-secondary flex-auto lg:group-even:flex-row-reverse flex-wrap max-lg:my-4"
 								>
 									{#each project.techstack as tech}
 										{#if tech.icon}
@@ -83,9 +83,14 @@
 										href={project.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 mt-6"
+										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 lg:mt-6 max-lg:my-6"
 									>
-										<Icon icon="ph:arrow-circle-right-thin" width="4rem" height="4rem" inline />
+										<IconifyIcon
+											icon="ei:external-link"
+											width={isDesktopScreen ? '4rem' : '2rem'}
+											height={isDesktopScreen ? '4rem' : '2rem'}
+											inline
+										/>
 										<span>View project</span>
 									</a>
 								{/if}
