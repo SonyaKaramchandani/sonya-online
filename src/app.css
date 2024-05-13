@@ -60,7 +60,7 @@ main {
 	margin: -1.2em;
 	padding: 1.2em;
 	/* hide the original text content */
-	opacity: 0;
+	/* opacity: 0; */
 	/* font-weight: 800; */
 }
 

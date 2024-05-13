@@ -1,16 +1,17 @@
 <script lang="ts">
 	import TextBlock from '$lib/components/TextBlock.svelte';
-	import ScrollText from '$lib/components/ScrollText.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
+	import Work from '$lib/components/Work.svelte';
+
+	export let data;
+	$: work = data.work;
 </script>
 
 <Cursor />
-<div id="canvas" />
 <Header />
 <main>
-	<ScrollText />
 	<div id="content">
 		<!-- TODO: something is causing extra spaces within svelte. Investigate as this is affecting texttexture.js -->
 		<h1>
@@ -61,5 +62,6 @@
 			</p>
 		</TextBlock>
 	</div>
+	<Work {work} />
 </main>
 <Footer />

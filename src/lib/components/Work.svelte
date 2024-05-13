@@ -1,17 +1,14 @@
 <script lang="ts">
-	import Cursor from '$lib/components/Cursor.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import Header from '$lib/components/Header.svelte';
 	import SvgIcon from '$lib/components/SvgIcon.svelte';
 	import Body from '$lib/components/Typography/body.svelte';
 	import Caption from '$lib/components/Typography/caption.svelte';
 	import H1 from '$lib/components/Typography/h1.svelte';
 	import H2 from '$lib/components/Typography/h2.svelte';
+	import type { Work } from '$lib/typings';
 	import IconifyIcon from '@iconify/svelte';
 	import { onMount } from 'svelte';
 
-	export let data;
-	$: work = data.work;
+	export let work: Work[] | undefined;
 
 	let isDesktopScreen: boolean;
 
@@ -23,15 +20,9 @@
 			isDesktopScreen = ScreenUtils.isDesktop();
 		});
 	});
-
-	// $: desktop_class = isDesktopScreen ? '3rem' : '1rem';
 </script>
 
-<Cursor />
-<Header />
-<!-- {console.log(isDesktopScreen)} -->
-<!-- TODO center all main content -->
-<main class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
+<div id="work" class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
 	<H1 class="lg:mt-10 drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
 		<div id="works-container" class="py-6">
@@ -64,6 +55,7 @@
 									{#each project.techstack as tech}
 										{#if tech.icon}
 											<div class="flex flex-col items-center">
+												<!-- TODO: Replace MJML sanity icon -->
 												<SvgIcon
 													data={tech.icon}
 													width={isDesktopScreen ? '3rem' : '2rem'}
@@ -76,7 +68,6 @@
 								</div>
 							</div>
 							{#if project.description}
-								<!-- TODO: pass props up from CustomParagraph Component -->
 								<Body class="lg:pt-4">{project.description}</Body>
 								{#if project.url}
 									<a
@@ -101,5 +92,4 @@
 			{/each}
 		</div>
 	{/if}
-</main>
-<Footer />
+</div>
