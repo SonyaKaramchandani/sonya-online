@@ -6,15 +6,15 @@
 
 @font-face {
 	font-family: 'Pangaia';
-	src: url('static/PPPangaia-Medium.otf');
+	src: url('/fonts/PPPangaia-Medium.otf');
 }
 @font-face {
 	font-family: 'Pangaia Italic';
-	src: url('static/PPPangaia-MediumItalic.otf');
+	src: url('/fonts/PPPangaia-MediumItalic.otf');
 }
 @font-face {
 	font-family: 'Neue Montreal';
-	src: url('static/PPNeue-Montreal.otf');
+	src: url('/fonts/PPNeue-Montreal.otf');
 }
 
 .custom-cursor {

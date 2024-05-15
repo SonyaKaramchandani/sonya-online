@@ -55,7 +55,7 @@
 >
 	<a href="/" on:click={handleLogoClick}
 		><div class="text-reflect">
-			<div class="font-serif-italic text-4xl lowercase font-normal logo">SK</div>
+			<img class="logo" height="50" width="50" src="/favicon.png" alt="logo" />
 		</div>
 	</a>
 
