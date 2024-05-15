@@ -1,6 +1,27 @@
 import {defineField, defineType} from 'sanity'
 import {MdBuild as icon} from 'react-icons/md'
 import {preview} from 'sanity-plugin-icon-picker'
+import {icons as fileIcons} from '@iconify-json/file-icons'
+import {IconComponent} from '../../IconComponent'
+
+const options = {
+  storeSvg: true,
+  providers: ['f7', 'fa', 'mdi', 'sa', 'hi', 'fi', 'si', 'iy'],
+  configurations: [
+    {
+      title: 'Iconify Icons',
+      provider: 'iy',
+      icons: () =>
+        Object.entries(fileIcons.icons).map(([name]) => {
+          return {
+            name,
+            component: () => IconComponent(`file-icons:${name}`),
+            tags: [name],
+          }
+        }),
+    },
+  ],
+}
 
 export default defineType({
   name: 'technology',
@@ -18,10 +39,7 @@ export default defineType({
       name: 'icon',
       type: 'iconPicker',
       title: 'Icon',
-      options: {
-        storeSvg: true,
-        providers: ['f7', 'fa', 'mdi', 'sa', 'hi', 'fi', 'si'],
-      },
+      options,
     }),
   ],
   preview: {
@@ -32,7 +50,7 @@ export default defineType({
     prepare(selection) {
       const {icon, title} = selection
       return {
-        media: preview(icon),
+        media: preview({...icon, options}),
         title: title,
       }
     },
