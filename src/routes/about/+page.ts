@@ -7,7 +7,7 @@ const query = `*[_type == "about"][0]{
 	title,
 	subtitle,
 	description,
-	cv,
+	"cv": cv.asset->url,
 	"image": picture.asset->url
   }`;
 

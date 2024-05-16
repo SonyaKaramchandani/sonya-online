@@ -5,17 +5,30 @@
 	import RichText from '$lib/components/RichText.svelte';
 	import H1 from '$lib/components/Typography/h1.svelte';
 	import H2 from '$lib/components/Typography/h2.svelte';
+	import IconifyIcon from '@iconify/svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 	$: about = data;
+
+	let isDesktopScreen: boolean;
+
+	onMount(async () => {
+		const ScreenUtils = await import('$lib/utils/screenUtils');
+		isDesktopScreen = ScreenUtils.isDesktop();
+
+		window.addEventListener('resize', () => {
+			isDesktopScreen = ScreenUtils.isDesktop();
+		});
+	});
 </script>
 
 <Cursor />
 <Header />
 <!-- TODO center all main content -->
-<main class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
+<main>
 	{#if about}
-		<div id="about-container" class="">
+		<div id="about-container" class="pt-20">
 			<div id="about-hero" class="relative">
 				<div id="heading-container" class="md:mt-10 absolute">
 					<H1 class="drop-shadow-md">{about.title}</H1>
@@ -35,11 +48,28 @@
 					<H2>{about.subtitle}</H2>
 				</div>
 			</div>
-			{#if about.description}
-				<div id="description-container" class="py-10 md:ml-[25%]">
+			<div id="description-container" class="py-10 md:ml-[25%]">
+				{#if about.description}
 					<RichText value={about.description} />
-				</div>
-			{/if}
+				{/if}
+				{#if about.cv}
+					<a
+						id="cv-download"
+						href={about.cv}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 lg:mt-6 max-lg:my-6"
+					>
+						<IconifyIcon
+							icon="lucide:download"
+							width={isDesktopScreen ? '2.5rem' : '2rem'}
+							height={isDesktopScreen ? '2.5rem' : '2rem'}
+							inline
+						/>
+						<span class="lg:text-[1.5vw] text-2xl">Download Resume</span>
+					</a>
+				{/if}
+			</div>
 		</div>
 	{/if}
 </main>

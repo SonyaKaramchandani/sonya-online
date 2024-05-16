@@ -43,15 +43,16 @@ body {
 }
 
 main {
-	padding: 0 3em;
+	padding: 0 4em;
 }
 
-#canvas {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
+.iconify {
+	> path {
+		stroke-width: 1.5;
+	}
+	> g {
+		stroke-width: 1.5;
+	}
 }
 
 .text-plane {
@@ -69,46 +70,19 @@ a {
 	color: theme('colors.secondary');
 	/* line-height: 2em; */
 }
-#content {
-	width: 100%;
-	padding: 2.5vw;
-	box-sizing: border-box;
-	position: relative;
-	z-index: 2;
-	/* text-decoration: none; */
-	/* text-transform: uppercase; */
-}
 
 #content > * p {
 	font-weight: 900;
 	padding: 1em 0;
 }
 
-#content h1 {
-	text-align: center;
-	margin: 25vh 0;
-	font-size: 10vw;
-	text-transform: none;
-	font-family: 'Pangaia', serif;
-	font-weight: 800;
-	line-height: 1;
-}
-
-#content h2 {
-	width: 25%;
-	margin: 15vh 0 15vh 50%;
-	font-size: 4vw;
-	font-weight: 800;
-	line-height: 1;
-}
-
-#extras {
+/* #extras {
 	margin-left: 25%;
 }
 
 #objective {
 	margin-left: 50%;
-}
+} */
 
 header {
 	a {
@@ -207,33 +181,41 @@ footer {
 	}
 }
 
+.animated-underline-container > span,
 .animated-underline {
 	position: relative;
-	display: inline-block;
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-		bottom: -2px;
-		width: 100%;
-		height: 0.12em;
-		/* background: theme('colors.accent'); */
-		background: currentColor;
-		/* TODO: make transition speed consisten across the width of the object */
-		transition: transform 0.5s ease-in-out;
-		transform-origin: center bottom;
-		transform: scaleX(0);
-	}
-	&.thin {
-		&::after {
-			height: 0.05em;
-		}
-	}
-	&:hover {
-		mix-blend-mode: luminosity;
-	}
-	&:hover::after {
-		bottom: -2px;
-		transform: scaleX(1);
-	}
+	display: inline-flex;
+}
+
+.animated-underline-container:hover > span::after,
+.animated-underline-container > span::after {
+	bottom: -6px;
+}
+
+.animated-underline:hover::after,
+.animated-underline::after {
+	bottom: -2px;
+}
+
+.animated-underline-container > span::after,
+.animated-underline::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 0.12em;
+	background: currentColor;
+	/* TODO: make transition speed consisten across the width of the object */
+	transition: transform 0.5s ease-in-out;
+	transform-origin: center bottom;
+	transform: scaleX(0);
+}
+
+.animated-underline-container:hover,
+.animated-underline:hover {
+	mix-blend-mode: luminosity;
+}
+.animated-underline-container:hover > span::after,
+.animated-underline:hover::after {
+	transform: scaleX(1);
 }

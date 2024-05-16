@@ -22,7 +22,7 @@
 	});
 </script>
 
-<div id="work" class="pt-20 pb-4 px-6 md:px-12 lg:px-16">
+<div id="work" class="pt-20">
 	<H1 class="lg:mt-10 drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
 		<div id="works-container" class="py-6">
@@ -44,7 +44,7 @@
 								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse items-center max-lg:my-4"
 							>
 								<H2
-									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-min lg:group-even:text-end max-lg:my-6"
+									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-fit max-lg:my-6"
 								>
 									{project.title}
 								</H2>
@@ -55,7 +55,6 @@
 									{#each project.techstack as tech}
 										{#if tech.icon}
 											<div class="flex flex-col items-center">
-												<!-- TODO: Replace MJML sanity icon -->
 												<SvgIcon
 													data={tech.icon}
 													width={isDesktopScreen ? '3rem' : '2rem'}
@@ -74,15 +73,15 @@
 										href={project.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 lg:mt-6 max-lg:my-6"
+										class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 lg:mt-6 max-lg:my-6"
 									>
 										<IconifyIcon
-											icon="ei:external-link"
-											width={isDesktopScreen ? '4rem' : '2rem'}
-											height={isDesktopScreen ? '4rem' : '2rem'}
+											icon="lucide:external-link"
+											width={isDesktopScreen ? '2.5rem' : '2rem'}
+											height={isDesktopScreen ? '2.5rem' : '2rem'}
 											inline
 										/>
-										<span>View project</span>
+										<span class="lg:text-[1.5vw] text-2xl">View project</span>
 									</a>
 								{/if}
 							{/if}

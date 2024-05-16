@@ -51,11 +51,11 @@
 </script>
 
 <header
-	class="fixed top-0 z-30 h-20 flex w-full py-4 px-6 md:px-12 lg:px-16 mix-blend-screen transition-transform ease-in items-center justify-between text-lg font-bold uppercase"
+	class="fixed top-0 z-30 h-20 flex w-full my-8 px-16 mix-blend-screen transition-transform ease-in items-center justify-between text-lg font-bold uppercase"
 >
 	<a href="/" on:click={handleLogoClick}
 		><div class="text-reflect">
-			<img class="logo" height="50" width="50" src="/favicon.png" alt="logo" />
+			<img class="logo" height="40" width="40" src="/favicon.png" alt="logo" />
 		</div>
 	</a>
 
