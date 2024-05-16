@@ -55,9 +55,8 @@
 				{#if about.cv}
 					<a
 						id="cv-download"
-						href={about.cv}
-						target="_blank"
-						rel="noopener noreferrer"
+						href={`${about.cv}?dl=sonya-karam-resume.pdf`}
+						download
 						class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 text-2xl gap-2 lg:mt-6 max-lg:my-6"
 					>
 						<IconifyIcon
