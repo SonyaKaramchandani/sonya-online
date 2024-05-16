@@ -26,9 +26,9 @@
 <Cursor />
 <Header />
 <main>
-	<div id="content" class="w-100 relative z-2">
+	<div id="content" class="w-100 relative z-2 pt-[20vh] mx-0">
 		<div
-			class="text-center my-[20vh] mx-0 md:text-[10vw] text-5xl font-serif font-bold relative z-10"
+			class="text-center md:text-[10vw] text-5xl leading-normal font-serif font-bold relative z-10"
 		>
 			Sonya Karam
 		</div>

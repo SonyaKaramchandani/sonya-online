@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 </script>
 
-<footer class="pt-40 pb-4 px-6 md:px-12 lg:px-16">
+<footer class="pt-40 pb-4 px-6 md:px-16">
 	<div
 		id="footer-contents"
 		class="flex flex-col md:flex-row gap-20 md:gap-36 pb-10 text-[clamp(1rem,1.75vw,1.75vw)]"
