@@ -29,21 +29,21 @@
 <main>
 	{#if about}
 		<div id="about-container">
-			<div id="about-hero" class="py-[20vh] relative">
+			<div id="about-hero" class="pt-[10vh] relative">
 				<div id="heading-container" class="md:mt-10 absolute">
 					<H1 class="drop-shadow-md">{about.title}</H1>
 				</div>
 				<!-- TODO: resize/style image -->
-				<div class="bg-background opacity-75 h-full">
+				<div class="bg-background opacity-75 h-full lg:w-1/2">
 					<img
 						src={`${about.image}?h=800&w=800&fit=min`}
 						alt="Sonya"
-						class="rounded-full object-cover max-w-1/2 max-h-1/2 md:w-1/2 md:h-1/2 mr-8"
+						class="rounded-full object-cover mr-8 max-w-/2 max-h-1/2 md:w-2/3 md:h-2/3 max-md:bottom-1/2"
 					/>
 				</div>
 				<div
 					id="subheading-container"
-					class="w-full md:w-1/3 xl:w-1/4 -bottom-5 absolute md:right-1/3 md:top-1/2 text-secondary drop-shadow-md"
+					class="w-full md:w-1/3 -bottom-5 absolute md:right-1/2 text-secondary drop-shadow-md"
 				>
 					<H2>{about.subtitle}</H2>
 				</div>

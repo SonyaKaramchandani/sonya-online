@@ -39,7 +39,6 @@ body {
 	color: theme('colors.text');
 	background-color: theme('colors.background');
 	font-family: 'Neue Montreal', sans-serif;
-	line-height: 1.2;
 }
 
 main {
@@ -194,10 +193,7 @@ footer {
 }
 
 .animated-underline-container:hover > span::after,
-.animated-underline-container > span::after {
-	bottom: -6px;
-}
-
+.animated-underline-container > span::after,
 .animated-underline:hover::after,
 .animated-underline::after {
 	bottom: -2px;

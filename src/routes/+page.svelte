@@ -37,19 +37,19 @@
 				Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a
 				multidisciplinary approach to problem-solving. My work focuses on building tools and
 				workflows that are beautiful, engaging, and user-centric.
+				<a
+					href="/about"
+					class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 gap-2"
+				>
+					<span>Read more</span>
+					<IconifyIcon
+						icon="lucide:circle-arrow-right"
+						width={isDesktopScreen ? '2.5rem' : '2rem'}
+						height={isDesktopScreen ? '2.5rem' : '2rem'}
+						inline
+					/>
+				</a>
 			</p>
-			<a
-				href="/about"
-				class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 gap-2 lg:mt-6 max-lg:my-6"
-			>
-				<span>Read more</span>
-				<IconifyIcon
-					icon="lucide:circle-arrow-right"
-					width={isDesktopScreen ? '3rem' : '2rem'}
-					height={isDesktopScreen ? '3rem' : '2rem'}
-					inline
-				/>
-			</a>
 		</TextBlock>
 	</div>
 	<Work {work} />
