@@ -28,8 +28,8 @@
 <!-- TODO center all main content -->
 <main>
 	{#if about}
-		<div id="about-container" class="pt-[20vh]">
-			<div id="about-hero" class="relative">
+		<div id="about-container">
+			<div id="about-hero" class="py-[20vh] relative">
 				<div id="heading-container" class="md:mt-10 absolute">
 					<H1 class="drop-shadow-md">{about.title}</H1>
 				</div>
