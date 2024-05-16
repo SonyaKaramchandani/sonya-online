@@ -28,11 +28,10 @@
 <main>
 	<div id="content" class="w-100 relative z-2">
 		<div
-			class="text-center my-[25vh] mx-0 md:text-[10vw] text-5xl font-serif font-bold relative z-10"
+			class="text-center my-[20vh] mx-0 md:text-[10vw] text-5xl font-serif font-bold relative z-10"
 		>
 			Sonya Karam
 		</div>
-		<H2 class="!font-sans !font-normal w-1/4 my-[14vh] ml-[50%]">Software dev with a flair for</H2>
 		<TextBlock id="bio">
 			<p>
 				Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a
