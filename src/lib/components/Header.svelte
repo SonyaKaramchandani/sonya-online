@@ -51,7 +51,7 @@
 </script>
 
 <header
-	class="fixed top-0 z-30 h-20 flex w-full py-8 px-8 md:px-16 mix-blend-screen transition-transform ease-in items-center justify-between text-lg font-bold uppercase"
+	class="fixed top-0 z-30 h-20 flex w-full py-8 px-8 md:px-16 transition-transform ease-in items-center justify-between text-lg font-bold uppercase"
 >
 	<a href="/" on:click={handleLogoClick}
 		><div class="text-reflect">

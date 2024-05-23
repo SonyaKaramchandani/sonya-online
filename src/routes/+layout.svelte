@@ -1,6 +1,19 @@
 <script>
 	import '../app.css';
 	import { fade } from 'svelte/transition';
+	import 'aos/dist/aos.css';
+	import AOS from 'aos';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		AOS.init({
+			once: true,
+			mirror: true,
+			easing: 'ease-in-out',
+			duration: 1000
+		});
+		// window.addEventListener('load', AOS.refresh);
+	});
 
 	export let data;
 

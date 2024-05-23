@@ -19,6 +19,7 @@
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tsconfig/svelte": "^5.0.4",
+		"@types/aos": "^3.0.3",
 		"@types/curtainsjs": "^8.1.3",
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -47,7 +48,7 @@
 		"@portabletext/types": "^2.0.13",
 		"@sanity/client": "^6.15.14",
 		"@sanity/image-url": "^1.0.2",
-		"curtainsjs": "^8.1.5",
+		"aos": "^2.3.4",
 		"dotenv": "^16.4.5",
 		"styled-components": "^6.1.8"
 	}

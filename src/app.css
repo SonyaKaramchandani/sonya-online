@@ -41,6 +41,15 @@ body {
 	font-family: 'Neue Montreal', sans-serif;
 }
 
+#hero {
+	text-align: center;
+}
+
+#hero > canvas {
+	width: 100% !important;
+	height: 100% !important;
+}
+
 main {
 	padding: 0 2em;
 }

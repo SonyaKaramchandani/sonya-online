@@ -25,11 +25,12 @@
 <div id="work" class="pt-20">
 	<H1 class="lg:mt-10 drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
-		<div id="works-container" class="py-6">
-			{#each work as project}
+		<div id="works-container" class="py-6 overflow-x-hidden">
+			{#each work as project, index}
 				<!-- TODO: resize/style image -->
 				<article
 					id="project-container"
+					data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
 					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse max-lg:[&:not(:first-child)]:mt-[10vh] max-lg:[&(:first-child)]:mt-[5vh]"
 				>
 					{#if project.image}

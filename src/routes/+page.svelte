@@ -4,14 +4,20 @@
 	import Header from '$lib/components/Header.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
 	import Work from '$lib/components/Work.svelte';
-	import H2 from '$lib/components/Typography/h2.svelte';
 	import IconifyIcon from '@iconify/svelte';
 	import { onMount } from 'svelte';
+	import resolveConfig from 'tailwindcss/resolveConfig';
+	import tailwindConfig from '../../tailwind.config';
+
+	const { theme } = resolveConfig(tailwindConfig);
+	// workaround for custom color typings
+	const colors = theme?.colors as unknown as { [key: string]: string };
 
 	export let data;
 	$: work = data.work;
 
 	let isDesktopScreen: boolean;
+	let container;
 
 	onMount(async () => {
 		const ScreenUtils = await import('$lib/utils/screenUtils');
@@ -20,6 +26,46 @@
 		window.addEventListener('resize', () => {
 			isDesktopScreen = ScreenUtils.isDesktop();
 		});
+
+		container = document.getElementById('hero');
+
+		const text = new Blotter.Text('Sonya Karam', {
+			family: "'Pangaia', serif",
+			size: 200,
+			weight: 700,
+			fill: colors.text,
+			paddingLeft: 200,
+			paddingRight: 200
+		});
+
+		let material = new Blotter.LiquidDistortMaterial();
+
+		// material.uniforms.uSpeed.value = 0.3;
+		material.uniforms.uVolatility.value = 0.1;
+		// material.uniforms.uSeed.value = 0.1;
+
+		let blotter = new Blotter(material, {
+			texts: text
+		});
+
+		let scope = blotter.forText(text);
+
+		scope.appendTo(container);
+
+		document.addEventListener(
+			'mousemove',
+			function (ev) {
+				material.uniforms.uVolatility.value += Math.abs(ev.movementX) * 0.00005;
+				material.uniforms.uVolatility.value += Math.abs(ev.movementY) * 0.00005;
+			},
+			false
+		);
+
+		window.setInterval(function () {
+			if (material.uniforms.uVolatility.value > 0.01) {
+				material.uniforms.uVolatility.value *= 0.8;
+			}
+		}, 100);
 	});
 </script>
 
@@ -27,11 +73,7 @@
 <Header />
 <main>
 	<div id="content" class="w-100 relative z-2 py-[20vh] mx-0">
-		<div
-			class="text-center md:text-[10vw] text-5xl leading-normal font-serif font-bold relative z-10"
-		>
-			Sonya Karam
-		</div>
+		<div id="hero"></div>
 		<TextBlock id="bio">
 			<p>
 				Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a

@@ -28,9 +28,9 @@
 <!-- TODO center all main content -->
 <main>
 	{#if about}
-		<div id="about-container">
+		<div id="about-container" class="overflow-x-hidden">
 			<div id="about-hero" class="pt-[10vh] relative">
-				<div id="heading-container" class="md:mt-10 absolute">
+				<div id="heading-container" class="md:mt-10 absolute z-10" data-aos="fade-right">
 					<H1 class="drop-shadow-md">{about.title}</H1>
 				</div>
 				<!-- TODO: resize/style image -->
@@ -43,12 +43,13 @@
 				</div>
 				<div
 					id="subheading-container"
-					class="w-full md:w-1/3 -bottom-5 absolute md:right-1/2 text-secondary drop-shadow-md"
+					class="w-full md:w-1/3 -bottom-5 absolute md:right-1/3 lg:right-1/2 text-secondary drop-shadow-md z-10"
+					data-aos="fade-left"
 				>
 					<H2>{about.subtitle}</H2>
 				</div>
 			</div>
-			<div id="description-container" class="py-10 md:ml-[25%]">
+			<div id="description-container" class="py-10 md:ml-[25%]" data-aos="fade-left">
 				{#if about.description}
 					<RichText value={about.description} />
 				{/if}
