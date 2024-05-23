@@ -28,10 +28,10 @@
 				class="animated-underline">SvelteKit</a
 			>,
 			<a
-				href="https://www.curtainsjs.com/"
+				href="https://blotter.js.org/"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="animated-underline">curtains.js</a
+				class="animated-underline">Blotter</a
 			>
 			and
 			<a
