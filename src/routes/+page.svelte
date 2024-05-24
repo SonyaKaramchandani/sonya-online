@@ -51,11 +51,11 @@
 
 		const text = new Blotter.Text('Sonya Karam', {
 			family: "'Pangaia', serif",
-			size: isDesktopScreen ? 100 : 50,
+			size: isDesktopScreen ? 150 : 40,
 			weight: 700,
 			fill: colors.text,
-			paddingLeft: isDesktopScreen ? 200 : 0,
-			paddingRight: isDesktopScreen ? 200 : 0
+			paddingLeft: isDesktopScreen ? 200 : 10,
+			paddingRight: isDesktopScreen ? 200 : 10
 		});
 
 		let material = new Blotter.LiquidDistortMaterial();

@@ -45,7 +45,7 @@ body {
 	background-image: url('/topo1.svg'), url('/topo2.svg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: auto;
 	background-position:
 		20% 20%,
 		80% 80%;
