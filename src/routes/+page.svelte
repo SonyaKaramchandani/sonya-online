@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import resolveConfig from 'tailwindcss/resolveConfig';
 	import tailwindConfig from '../../tailwind.config';
+	import Icon from '@iconify/svelte';
 
 	const { theme } = resolveConfig(tailwindConfig);
 	// workaround for custom color typings
@@ -69,26 +70,28 @@
 <Cursor />
 <Header />
 <main>
-	<div id="hero" class="w-100 relative z-2 pt-[20vh] pb-[10vh] mx-0"></div>
-	<div id="bio" class="md:w-1/2 my-[10vh] leading-tight md:text-[2vw]">
-		<p>
-			Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a
-			multidisciplinary approach to problem-solving. My work focuses on building tools and workflows
-			that are beautiful, engaging, and user-centric.
-			<a
-				href="/about"
-				class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 gap-2"
-			>
+	<div id="landing">
+		<div id="hero" class="relative z-2 pt-[20vh] mx-0"></div>
+		<!-- <div
+		id="scroll-indicator"
+		class="bounce text-center absolute z-10 bottom-2 left-1/2 text-secondary"
+	>
+		<Icon icon="material-symbols:arrow-circle-down" width="3rem" height="3rem" />
+	</div> -->
+		<div id="bio" class="md:w-1/2 my-[20vh] leading-tight md:text-[2vw]">
+			<p>
+				Hey, I'm <span class="text-accent">Sonya</span>, a software developer with a background in
+				GIS and UX. My work focuses on building engaging and user-centric workflows that make an
+				impact.
+			</p>
+			<a href="/about" class="read-more-button">
 				<span>Read more</span>
-				<IconifyIcon
-					icon="lucide:circle-arrow-right"
-					width={isDesktopScreen ? '2.5rem' : '2rem'}
-					height={isDesktopScreen ? '2.5rem' : '2rem'}
-					inline
-				/>
+				<IconifyIcon icon="lucide:chevrons-right" width="1rem" height="1rem" inline />
 			</a>
-		</p>
+		</div>
 	</div>
-	<Work {work} />
+	<div id="page-container">
+		<Work {work} />
+	</div>
 </main>
 <Footer />

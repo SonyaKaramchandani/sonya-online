@@ -41,6 +41,14 @@ body {
 	font-family: 'Neue Montreal', sans-serif;
 }
 
+#landing {
+	background-image: url('/topo1.svg'), url('/topo2.svg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 20%, 80%;
+}
+
 #hero {
 	text-align: center;
 }
@@ -49,13 +57,13 @@ body {
 	width: 100% !important;
 	height: 100% !important;
 }
-
-main {
+#landing,
+#page-container {
 	padding: 0 2em;
 }
 
 @media only screen and (min-width: 768px) {
-	main {
+	#page-container {
 		padding: 0 4em;
 	}
 }
@@ -69,16 +77,6 @@ main {
 	}
 }
 
-.text-plane {
-	display: inline-block;
-	/* apply negative margins and padding to avoid chars from being cropped */
-	margin: -1.2em;
-	padding: 1.2em;
-	/* hide the original text content */
-	/* opacity: 0; */
-	/* font-weight: 800; */
-}
-
 a {
 	cursor: pointer;
 	color: theme('colors.secondary');
@@ -89,14 +87,6 @@ a {
 	font-weight: 900;
 	padding: 1em 0;
 }
-
-/* #extras {
-	margin-left: 25%;
-}
-
-#objective {
-	margin-left: 50%;
-} */
 
 header {
 	a {
@@ -229,4 +219,46 @@ footer {
 .animated-underline-container:hover > span::after,
 .animated-underline:hover::after {
 	transform: scaleX(1);
+}
+
+.bounce {
+	animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+	0%,
+	20%,
+	50%,
+	80%,
+	100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-15px);
+	}
+	60% {
+		transform: translateY(-5px);
+	}
+}
+
+.read-more-button {
+	display: inline-flex;
+	margin: 0.5rem 0;
+	padding: 7px 10px; /* Adjust padding for desired size */
+	font-size: 0.8rem; /* Adjust font size as needed */
+	color: theme('colors.background'); /* Text color */
+	background-color: theme('colors.accent'); /* Button background color */
+	border: none; /* Remove default border */
+	border-radius: 25px; /* Rounded corners */
+	text-decoration: none; /* Remove underline from text */
+	text-align: center; /* Center text */
+	align-items: center;
+	gap: 0.2rem;
+	transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+	cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover effect for the button */
+.read-more-button:hover {
+	background-color: theme('colors.secondary');
+	opacity: 75;
 }
