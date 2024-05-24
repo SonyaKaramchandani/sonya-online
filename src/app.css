@@ -46,7 +46,9 @@ body {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-position: 20%, 80%;
+	background-position:
+		20% 20%,
+		80% 80%;
 }
 
 #hero {
@@ -57,7 +59,7 @@ body {
 	width: 100% !important;
 	height: 100% !important;
 }
-#landing,
+
 #page-container {
 	padding: 0 2em;
 }
@@ -221,8 +223,26 @@ footer {
 	transform: scaleX(1);
 }
 
-.bounce {
-	animation: bounce 2s ease infinite;
+.button-visible {
+	visibility: visible;
+	opacity: 1;
+}
+
+.button-hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.bounce-animation {
+	animation: bounce 2.5s cubic-bezier(0.79, 0.14, 0.15, 0.86) 2s infinite;
+	animation-play-state: running;
+	transition:
+		visibility 0.5s linear,
+		opacity 0.5s linear;
+}
+
+.bounce-animation:hover {
+	animation-play-state: paused;
 }
 @keyframes bounce {
 	0%,
@@ -232,10 +252,10 @@ footer {
 	100% {
 		transform: translateY(0);
 	}
-	40% {
+	75% {
 		transform: translateY(-15px);
 	}
-	60% {
+	95% {
 		transform: translateY(-5px);
 	}
 }

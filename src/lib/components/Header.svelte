@@ -8,7 +8,7 @@
 	$: path = $page.url.pathname;
 
 	let workElement: HTMLElement;
-	let contentElement: HTMLElement;
+	let landingElement: HTMLElement;
 	let isWorkVisible = false;
 
 	const handleWorkAnchorClick = (event: MouseEvent) => {
@@ -21,13 +21,17 @@
 	const handleLogoClick = (event: MouseEvent) => {
 		if (path === '/') {
 			event.preventDefault();
-			smoothScroll(contentElement);
+			smoothScroll(landingElement);
 		}
 	};
 
 	onMount(() => {
 		workElement = document.getElementById('work') as HTMLDivElement;
-		contentElement = document.getElementById('content') as HTMLDivElement;
+		landingElement = document.getElementById('landing') as HTMLDivElement;
+
+		const options = {
+			threshold: 0.05
+		};
 
 		let observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
@@ -37,7 +41,7 @@
 					isWorkVisible = false;
 				}
 			});
-		});
+		}, options);
 
 		if (path === '/') {
 			observer.observe(workElement);
