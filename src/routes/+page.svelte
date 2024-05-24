@@ -1,5 +1,4 @@
 <script lang="ts">
-	import TextBlock from '$lib/components/TextBlock.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
@@ -31,18 +30,16 @@
 
 		const text = new Blotter.Text('Sonya Karam', {
 			family: "'Pangaia', serif",
-			size: 200,
+			size: isDesktopScreen ? 100 : 50,
 			weight: 700,
 			fill: colors.text,
-			paddingLeft: 200,
-			paddingRight: 200
+			paddingLeft: isDesktopScreen ? 200 : 0,
+			paddingRight: isDesktopScreen ? 200 : 0
 		});
 
 		let material = new Blotter.LiquidDistortMaterial();
 
-		// material.uniforms.uSpeed.value = 0.3;
-		material.uniforms.uVolatility.value = 0.1;
-		// material.uniforms.uSeed.value = 0.1;
+		material.uniforms.uVolatility.value = 0.01;
 
 		let blotter = new Blotter(material, {
 			texts: text
@@ -72,27 +69,25 @@
 <Cursor />
 <Header />
 <main>
-	<div id="content" class="w-100 relative z-2 py-[20vh] mx-0">
-		<div id="hero"></div>
-		<TextBlock id="bio">
-			<p>
-				Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a
-				multidisciplinary approach to problem-solving. My work focuses on building tools and
-				workflows that are beautiful, engaging, and user-centric.
-				<a
-					href="/about"
-					class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 gap-2"
-				>
-					<span>Read more</span>
-					<IconifyIcon
-						icon="lucide:circle-arrow-right"
-						width={isDesktopScreen ? '2.5rem' : '2rem'}
-						height={isDesktopScreen ? '2.5rem' : '2rem'}
-						inline
-					/>
-				</a>
-			</p>
-		</TextBlock>
+	<div id="hero" class="w-100 relative z-2 pt-[20vh] pb-[10vh] mx-0"></div>
+	<div id="bio" class="md:w-1/2 my-[10vh] leading-tight md:text-[2vw]">
+		<p>
+			Hey there! I'm <span class="text-accent">Sonya</span>, a full-stack developer with a
+			multidisciplinary approach to problem-solving. My work focuses on building tools and workflows
+			that are beautiful, engaging, and user-centric.
+			<a
+				href="/about"
+				class="animated-underline-container inline-flex flex-row items-center nowrap transition opacity-1 ease-in-out duration-500 hover:mix-blend-luminosity hover:opacity-75 gap-2"
+			>
+				<span>Read more</span>
+				<IconifyIcon
+					icon="lucide:circle-arrow-right"
+					width={isDesktopScreen ? '2.5rem' : '2rem'}
+					height={isDesktopScreen ? '2.5rem' : '2rem'}
+					inline
+				/>
+			</a>
+		</p>
 	</div>
 	<Work {work} />
 </main>
