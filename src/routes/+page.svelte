@@ -9,6 +9,8 @@
 	import tailwindConfig from '../../tailwind.config';
 	import Icon from '@iconify/svelte';
 	import { smoothScroll } from '$lib/utils/smoothScroll';
+	import { MathUtils } from '$lib/utils/mathUtils';
+	import { getMousePos } from '$lib/utils/screenUtils';
 
 	const { theme } = resolveConfig(tailwindConfig);
 	// workaround for custom color typings
@@ -20,7 +22,8 @@
 	let workElement: HTMLElement;
 	let scrollIndicator: HTMLElement;
 	let isDesktopScreen: boolean;
-	let container;
+	let winsize: { width: number; height: number };
+	let fontsize: number;
 
 	const onScrollButtonClick = () => {
 		smoothScroll(workElement);
@@ -32,13 +35,22 @@
 
 	onMount(async () => {
 		const ScreenUtils = await import('$lib/utils/screenUtils');
+
 		isDesktopScreen = ScreenUtils.isDesktop();
 		workElement = document.getElementById('work') as HTMLDivElement;
 		scrollIndicator = document.getElementById('scroll-indicator') as HTMLDivElement;
 
-		window.addEventListener('resize', () => {
-			isDesktopScreen = ScreenUtils.isDesktop();
-		});
+		const body = document.body;
+		const docEl = document.documentElement;
+		const hero = document.getElementById('hero')!;
+		const landing = document.getElementById('landing');
+		const landingText = hero.firstElementChild!;
+		fontsize = window.innerWidth / 8;
+
+		const calcWinsize = () => (winsize = { width: window.innerWidth, height: window.innerHeight });
+		calcWinsize();
+
+		let mousePos = { x: winsize.width / 2, y: winsize.height / 2 };
 
 		window.addEventListener('scroll', function () {
 			if (window.scrollY > 399 && scrollIndicator.classList.contains('button-visible')) {
@@ -47,43 +59,63 @@
 			}
 		});
 
-		container = document.getElementById('hero');
+		landing?.addEventListener('mousemove', (ev) => (mousePos = getMousePos(ev, body, docEl)));
 
-		const text = new Blotter.Text('Sonya Karam', {
+		window.addEventListener('resize', () => {
+			calcWinsize;
+			isDesktopScreen = ScreenUtils.isDesktop();
+		});
+
+		const text = new Blotter.Text(landingText.innerHTML, {
 			family: "'Pangaia', serif",
-			size: isDesktopScreen ? 150 : 40,
+			size: fontsize,
 			weight: 700,
 			fill: colors.text,
 			paddingLeft: isDesktopScreen ? 200 : 10,
 			paddingRight: isDesktopScreen ? 200 : 10
 		});
 
-		let material = new Blotter.LiquidDistortMaterial();
+		hero.removeChild(landingText);
+		const material = new Blotter.LiquidDistortMaterial();
 
-		material.uniforms.uVolatility.value = 0.01;
+		material.uniforms.uVolatility.value = 0;
 
-		let blotter = new Blotter(material, {
+		const blotter = new Blotter(material, {
 			texts: text
 		});
 
-		let scope = blotter.forText(text);
+		const scope = blotter.forText(text);
 
-		scope.appendTo(container);
+		scope.appendTo(hero);
 
-		document.addEventListener(
-			'mousemove',
-			function (ev) {
-				material.uniforms.uVolatility.value += Math.abs(ev.movementX) * 0.00005;
-				material.uniforms.uVolatility.value += Math.abs(ev.movementY) * 0.00005;
-			},
-			false
-		);
+		let lastMousePosition = { x: winsize.width / 2, y: winsize.height / 2 };
+		let volatility = 0;
 
-		window.setInterval(function () {
-			if (material.uniforms.uVolatility.value > 0.01) {
-				material.uniforms.uVolatility.value *= 0.8;
-			}
-		}, 100);
+		const render = () => {
+			const docScrolls = {
+				left: body.scrollLeft + docEl.scrollLeft,
+				top: body.scrollTop + docEl.scrollTop
+			};
+			const relmousepos = { x: mousePos.x - docScrolls.left, y: mousePos.y - docScrolls.top };
+			const mouseDistance = MathUtils.distance(
+				lastMousePosition.x,
+				relmousepos.x,
+				lastMousePosition.y,
+				relmousepos.y
+			);
+
+			volatility = MathUtils.lerp(
+				volatility,
+				Math.min(MathUtils.lineEq(0.15, 0, 100, 0, mouseDistance), 0.15),
+				0.05
+			);
+
+			material.uniforms.uVolatility.value = volatility;
+
+			lastMousePosition = { x: relmousepos.x, y: relmousepos.y };
+			requestAnimationFrame(render);
+		};
+		requestAnimationFrame(render);
 	});
 </script>
 
@@ -92,9 +124,12 @@
 <main>
 	<div id="page-container">
 		<div id="landing" class="h-screen py-[25vh]">
-			<div id="hero" class="z-2 mx-0"></div>
+			<div id="hero" class="z-2 mx-0">
+				<span class={`font-serif text-[12vw] font-black`}>Sonya Karam</span>
+			</div>
 			<button
 				id="scroll-indicator"
+				aria-label="scroll-indicator-button"
 				class="bounce-animation button-visible text-right absolute z-10 bottom-2 right-2 text-secondary"
 				on:click={onScrollButtonClick}
 			>
@@ -111,7 +146,7 @@
 					impact.
 				</p>
 				<a href="/about" class="read-more-button">
-					<span>Read more</span>
+					<span>More about me</span>
 					<IconifyIcon icon="lucide:chevrons-right" width="1rem" height="1rem" inline />
 				</a>
 			</div>

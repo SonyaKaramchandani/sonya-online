@@ -263,18 +263,17 @@ footer {
 .read-more-button {
 	display: inline-flex;
 	margin: 0.5rem 0;
-	padding: 7px 10px; /* Adjust padding for desired size */
-	font-size: 0.8rem; /* Adjust font size as needed */
-	color: theme('colors.background'); /* Text color */
-	background-color: theme('colors.accent'); /* Button background color */
-	border: none; /* Remove default border */
-	border-radius: 25px; /* Rounded corners */
-	text-decoration: none; /* Remove underline from text */
-	text-align: center; /* Center text */
+	padding: 7px 10px;
+	font-size: 0.8rem;
+	color: theme('colors.background');
+	background-color: theme('colors.accent');
+	border: none;
+	border-radius: 25px;
+	text-decoration: none;
+	text-align: center;
 	align-items: center;
 	gap: 0.2rem;
-	transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
-	cursor: pointer; /* Pointer cursor on hover */
+	transition: background-color 0.3s ease-in-out;
 }
 
 /* Hover effect for the button */

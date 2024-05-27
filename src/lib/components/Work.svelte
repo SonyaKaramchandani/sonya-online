@@ -35,7 +35,13 @@
 				>
 					{#if project.image}
 						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:odd:justify-end">
-							<img src={project.image} alt={project.title} class="drop-shadow-md" />
+							<img
+								src={`${project.image}?h=500&w=500&auto=format`}
+								alt={project.title}
+								class="drop-shadow-md"
+								width="500px"
+								height="500px"
+							/>
 						</div>
 					{/if}
 					<div id="project-info" class="lg:flex z-4 lg:w-[50%] lg:group-even:justify-end">

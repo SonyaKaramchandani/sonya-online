@@ -5,9 +5,9 @@
 <footer class="pt-40 pb-4 px-6 md:px-16">
 	<div
 		id="footer-contents"
-		class="flex flex-col md:flex-row gap-20 md:gap-36 pb-10 text-[clamp(1rem,1.75vw,1.75vw)]"
+		class="flex flex-col md:flex-row gap-20 md:gap-36 pb-10 text-[clamp(1.15rem,1.75vw,1.75vw)] text-text"
 	>
-		<div id="breakdown" class="text-start text-text">
+		<div id="breakdown" class="text-start leading-loose">
 			Designed in <a
 				href="https://www.figma.com/"
 				target="_blank"
@@ -56,7 +56,7 @@
 				class="animated-underline">Pangram Pangram</a
 			>.
 		</div>
-		<div id="links-container" class="text-text">
+		<div id="links-container">
 			<a
 				id="linkedin"
 				class="icon-text-pair animated-underline"
