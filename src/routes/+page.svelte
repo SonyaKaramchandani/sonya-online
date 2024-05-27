@@ -139,15 +139,20 @@
 					height={isDesktopScreen ? '2rem' : '1.5rem'}
 				/>
 			</button>
-			<div id="bio" class="md:w-1/2 my-[10vh] leading-tight md:text-[2vw]">
+			<div id="bio" class="md:w-1/2 my-[10vh] md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
 				<p>
 					I'm <span class="text-accent">Sonya</span>, a software developer with a background in GIS
 					and UX. My work focuses on building engaging and user-centric workflows that make an
 					impact.
 				</p>
-				<a href="/about" class="read-more-button">
+				<a href="/about" class="read-more-button text-sm lg:text-lg">
 					<span>More about me</span>
-					<IconifyIcon icon="lucide:chevrons-right" width="1rem" height="1rem" inline />
+					<IconifyIcon
+						icon="lucide:chevrons-right"
+						width={isDesktopScreen ? '1.5rem' : '1rem'}
+						height={isDesktopScreen ? '1.5rem' : '1rem'}
+						inline
+					/>
 				</a>
 			</div>
 		</div>

@@ -264,7 +264,6 @@ footer {
 	display: inline-flex;
 	margin: 0.5rem 0;
 	padding: 7px 10px;
-	font-size: 0.8rem;
 	color: theme('colors.background');
 	background-color: theme('colors.accent');
 	border: none;
