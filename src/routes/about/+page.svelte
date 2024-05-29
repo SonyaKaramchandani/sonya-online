@@ -31,7 +31,7 @@
 		{#if about}
 			<div id="about-container" class="overflow-x-hidden">
 				<div id="about-hero" class="pt-[15vh] relative">
-					<div id="heading-container" class="md:mt-10 absolute z-10" data-aos="fade-right">
+					<div id="heading-container" class="absolute z-10" data-aos="fade-right">
 						<H1 class="drop-shadow-md">{about.title}</H1>
 					</div>
 					<!-- TODO: resize/style image -->

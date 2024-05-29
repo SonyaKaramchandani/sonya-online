@@ -23,7 +23,7 @@
 </script>
 
 <div id="work" class="pt-[15vh]">
-	<H1 class="lg:mt-10 drop-shadow-md">Selected Works</H1>
+	<H1 class="drop-shadow-md">Selected Works</H1>
 	{#if work?.length}
 		<div id="works-container" class="py-6 overflow-x-hidden">
 			{#each work as project, index}
