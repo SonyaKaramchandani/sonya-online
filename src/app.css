@@ -32,6 +32,7 @@
 	transform: translate(-50%, -50%);
 }
 
+html,
 body {
 	margin: 0;
 	width: 100%;
@@ -42,10 +43,11 @@ body {
 }
 
 #landing {
+	height: 100lvh;
 	background-image: url('/topo1.svg'), url('/topo2.svg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-size: auto;
+	background-size: contain;
 	background-position:
 		20% 20%,
 		80% 80%;
