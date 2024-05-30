@@ -121,6 +121,7 @@
 			if (window.scrollY > 399 && scrollIndicator.classList.contains('button-visible')) {
 				scrollIndicator.classList.add('button-hidden');
 				scrollIndicator.classList.remove('button-visible');
+				console.log('scroll');
 			}
 		});
 
@@ -129,17 +130,21 @@
 		let resizeTimeout: NodeJS.Timeout;
 
 		window.addEventListener('resize', () => {
-			clearTimeout(resizeTimeout);
-			resizeTimeout = setTimeout(() => {
-				isDesktopScreen = ScreenUtils.isDesktop();
-				calcWinsize();
+			// needed as scroll triggers resize events on mobile due to browser toolbars
+			var newWidth = window.innerWidth;
 
-				updateFontSizeAndPadding();
+			if (newWidth !== winSize.width) {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(() => {
+					isDesktopScreen = ScreenUtils.isDesktop();
+					calcWinsize();
+					updateFontSizeAndPadding();
 
-				requestAnimationFrame(() => {
-					createBlotter(fontSize, padding);
-				});
-			}, 200);
+					requestAnimationFrame(() => {
+						createBlotter(fontSize, padding);
+					});
+				}, 200);
+			}
 		});
 
 		createBlotter(fontSize, padding);
