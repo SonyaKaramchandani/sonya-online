@@ -34,6 +34,21 @@
 		}
 	};
 
+	let opacity = 1;
+
+	const hideScrollButton = () => {
+		if (window.scrollY > 399 && scrollIndicator.classList.contains('button-visible')) {
+			scrollIndicator.classList.add('button-hidden');
+			scrollIndicator.classList.remove('button-visible');
+		}
+	};
+
+	const fadeOnScroll = () => {
+		const scrollTop = window.scrollY;
+		const maxScroll = window.innerHeight;
+		opacity = Math.max(0, 1 - scrollTop / maxScroll);
+	};
+
 	onMount(async () => {
 		const ScreenUtils = await import('$lib/utils/screenUtils');
 
@@ -117,13 +132,8 @@
 			requestAnimationFrame(render);
 		};
 
-		window.addEventListener('scroll', function () {
-			if (window.scrollY > 399 && scrollIndicator.classList.contains('button-visible')) {
-				scrollIndicator.classList.add('button-hidden');
-				scrollIndicator.classList.remove('button-visible');
-				console.log('scroll');
-			}
-		});
+		window.addEventListener('scroll', hideScrollButton);
+		window.addEventListener('scroll', fadeOnScroll);
 
 		landing?.addEventListener('mousemove', (ev) => (mousePos = getMousePos(ev, body, docEl)));
 
@@ -155,7 +165,11 @@
 <Header />
 <main>
 	<div id="page-container">
-		<div id="landing" class="h-screen flex flex-col justify-center background-topo">
+		<div
+			id="landing"
+			class="h-screen flex flex-col justify-center background-topo"
+			style="opacity: {opacity}"
+		>
 			<div id="hero" class="z-2 mx-0 py-[6vh]">
 				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
 			</div>

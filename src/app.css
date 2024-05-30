@@ -44,12 +44,13 @@ body {
 
 .background-topo {
 	background-image: url('/topo1.svg'), url('/topo2.svg');
-	background-attachment: local;
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position:
 		20% 20%,
 		80% 80%;
+	transition: opacity 0.3s ease; /* Smooth transition */
 }
 
 #hero {
