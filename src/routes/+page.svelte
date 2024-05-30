@@ -155,9 +155,9 @@
 <Header />
 <main>
 	<div id="page-container">
-		<div id="landing" class="h-lvh flex flex-col justify-center">
+		<div id="landing" class="h-screen flex flex-col justify-center background-topo">
 			<div id="hero" class="z-2 mx-0 py-[6vh]">
-				<span class={`initial-landing-text font-serif text-[12vw] font-black`}>Sonya Karam</span>
+				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
 			</div>
 			<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
 				<p>
