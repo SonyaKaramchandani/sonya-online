@@ -43,7 +43,7 @@ body {
 }
 
 #landing {
-	height: 100lvh;
+	height: 100dvh;
 	background-image: url('/topo1.svg'), url('/topo2.svg');
 	background-attachment: fixed;
 	background-repeat: no-repeat;
