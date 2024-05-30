@@ -14,7 +14,7 @@ const query = `*[_type == "about"][0]{
 export const load = async () => {
 	try {
 		const about: About = await sanityClient.fetch(query);
-		// console.log('Data', { about });
+
 		return about;
 	} catch (error) {
 		console.error('An error occurred:', error);

@@ -138,7 +138,6 @@
 
 				requestAnimationFrame(() => {
 					createBlotter(fontSize, padding);
-					console.log('Resized and animation logic executed');
 				});
 			}, 200);
 		});
