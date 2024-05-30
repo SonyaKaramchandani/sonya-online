@@ -4,6 +4,7 @@
 	import 'aos/dist/aos.css';
 	import AOS from 'aos';
 	import { onMount } from 'svelte';
+	import Analytics from '$lib/components/Analytics.svelte';
 
 	onMount(() => {
 		AOS.init({
@@ -25,4 +26,5 @@
 	<div in:fade={{ duration: 300, delay: 400 }} out:fade={{ duration: 300 }}>
 		<slot />
 	</div>
+	<Analytics />
 {/key}
