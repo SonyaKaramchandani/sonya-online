@@ -63,6 +63,9 @@
 		const hero = document.getElementById('hero')!;
 		const landing = document.getElementById('landing');
 
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 		const calcWinsize = () => (winSize = { width: window.innerWidth, height: window.innerHeight });
 		calcWinsize();
 
@@ -142,6 +145,9 @@
 		let resizeTimeout: NodeJS.Timeout;
 
 		window.addEventListener('resize', () => {
+			let vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 			// needed as scroll triggers resize events on mobile due to browser toolbars
 			var newWidth = window.innerWidth;
 

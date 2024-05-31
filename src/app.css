@@ -19,6 +19,7 @@
 
 :global(:root) {
 	--background-opacity: 1;
+	--vh: 1;
 }
 
 .custom-cursor {
@@ -66,7 +67,10 @@ body {
 	background-position:
 		20% 20%,
 		80% 80%;
-	transition: opacity 0.3s ease; /* Smooth transition */
+	background-position:
+		calc(var(--vh, 1vh) * 0) calc(var(--vh, 1vh) * 12),
+		calc(var(--vh, 1vh) * 0) calc(var(--vh, 1vh) * 42);
+	transition: opacity 0.3s ease;
 }
 
 #hero {
