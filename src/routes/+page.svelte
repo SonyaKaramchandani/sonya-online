@@ -45,8 +45,10 @@
 
 	const fadeOnScroll = () => {
 		const scrollTop = window.scrollY;
-		const maxScroll = window.innerHeight;
+		const maxScroll = window.innerHeight / 2;
 		opacity = Math.max(0, 1 - scrollTop / maxScroll);
+		const background = document.getElementById('background-topo')!;
+		background.style.setProperty('--background-opacity', `${opacity}`);
 	};
 
 	onMount(async () => {
@@ -64,7 +66,7 @@
 		const calcWinsize = () => (winSize = { width: window.innerWidth, height: window.innerHeight });
 		calcWinsize();
 
-		let mousePos = { x: winSize.width / 2, y: winSize.height / 2 };
+		let mousePos = { x: winSize.width / 2, y: winSize.height };
 
 		const updateFontSizeAndPadding = () => {
 			fontSize = Math.min(Math.max(window.innerWidth * 0.13, 50), 200);
@@ -165,43 +167,42 @@
 <Header />
 <main>
 	<div id="page-container">
-		<div
-			id="landing"
-			class="h-screen flex flex-col justify-center background-topo"
-			style="opacity: {opacity}"
-		>
-			<div id="hero" class="z-2 mx-0 py-[6vh]">
-				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
-			</div>
-			<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
-				<p>
-					I'm <span class="text-accent">Sonya</span>, a software developer passionate about UX and
-					GIS. I build engaging user-centric workflows that make an impact.
-				</p>
-				<a href="/about" class="read-more-button text-sm lg:text-lg">
-					<span>More about me</span>
-					<IconifyIcon
-						icon="lucide:chevrons-right"
-						width={isDesktopScreen ? '1.5rem' : '1rem'}
-						height={isDesktopScreen ? '1.5rem' : '1rem'}
-						inline
+		<!-- TODO: resolve height of mobile screen affecting background image position -->
+		<div id="background-topo">
+			<div id="landing" class="h-screen flex flex-col justify-center">
+				<div id="hero" class="z-2 mx-0 py-[6vh]">
+					<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
+				</div>
+				<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
+					<p>
+						I'm <span class="text-accent">Sonya</span>, a software developer passionate about UX and
+						GIS. I build engaging user-centric workflows that make an impact.
+					</p>
+					<a href="/about" class="read-more-button text-sm lg:text-lg">
+						<span>More about me</span>
+						<IconifyIcon
+							icon="lucide:chevrons-right"
+							width={isDesktopScreen ? '1.5rem' : '1rem'}
+							height={isDesktopScreen ? '1.5rem' : '1rem'}
+							inline
+						/>
+					</a>
+				</div>
+				<button
+					id="scroll-indicator"
+					aria-label="scroll-indicator-button"
+					class="bounce-animation button-visible text-right absolute z-10 bottom-2 right-2 text-secondary"
+					on:click={onScrollButtonClick}
+				>
+					<Icon
+						icon="material-symbols:arrow-circle-down"
+						width={isDesktopScreen ? '2rem' : '1.5rem'}
+						height={isDesktopScreen ? '2rem' : '1.5rem'}
 					/>
-				</a>
+				</button>
 			</div>
-			<button
-				id="scroll-indicator"
-				aria-label="scroll-indicator-button"
-				class="bounce-animation button-visible text-right absolute z-10 bottom-2 right-2 text-secondary"
-				on:click={onScrollButtonClick}
-			>
-				<Icon
-					icon="material-symbols:arrow-circle-down"
-					width={isDesktopScreen ? '2rem' : '1.5rem'}
-					height={isDesktopScreen ? '2rem' : '1.5rem'}
-				/>
-			</button>
+			<Work {work} />
 		</div>
-		<Work {work} />
 	</div>
 </main>
 <Footer />
