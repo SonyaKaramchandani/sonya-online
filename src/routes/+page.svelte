@@ -173,7 +173,6 @@
 <Header />
 <main>
 	<div id="page-container">
-		<!-- TODO: resolve height of mobile screen affecting background image position -->
 		<div id="background-topo">
 			<div id="landing" class="h-screen flex flex-col justify-center">
 				<div id="hero" class="z-2 mx-0 py-[6vh]">
