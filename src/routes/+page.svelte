@@ -173,41 +173,40 @@
 <Header />
 <main>
 	<div id="page-container">
-		<div id="background-topo">
-			<div id="landing" class="h-screen flex flex-col justify-center">
-				<div id="hero" class="z-2 mx-0 py-[6vh]">
-					<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
-				</div>
-				<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
-					<p>
-						I'm <span class="text-accent">Sonya</span>, a software developer passionate about UX and
-						GIS. I build engaging user-centric workflows that make an impact.
-					</p>
-					<a href="/about" class="read-more-button text-sm lg:text-lg">
-						<span>More about me</span>
-						<IconifyIcon
-							icon="lucide:chevrons-right"
-							width={isDesktopScreen ? '1.5rem' : '1rem'}
-							height={isDesktopScreen ? '1.5rem' : '1rem'}
-							inline
-						/>
-					</a>
-				</div>
-				<button
-					id="scroll-indicator"
-					aria-label="scroll-indicator-button"
-					class="bounce-animation button-visible text-right absolute z-10 bottom-2 right-2 text-secondary"
-					on:click={onScrollButtonClick}
-				>
-					<Icon
-						icon="material-symbols:arrow-circle-down"
-						width={isDesktopScreen ? '2rem' : '1.5rem'}
-						height={isDesktopScreen ? '2rem' : '1.5rem'}
-					/>
-				</button>
+		<div id="background-topo" />
+		<div id="landing" class="h-screen flex flex-col justify-center">
+			<div id="hero" class="z-2 mx-0 py-[6vh]">
+				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
 			</div>
-			<Work {work} />
+			<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
+				<p>
+					I'm <span class="text-accent">Sonya</span>, a software developer passionate about UX and
+					GIS. I build engaging user-centric workflows that make an impact.
+				</p>
+				<a href="/about" class="read-more-button text-sm lg:text-lg">
+					<span>More about me</span>
+					<IconifyIcon
+						icon="lucide:chevrons-right"
+						width={isDesktopScreen ? '1.5rem' : '1rem'}
+						height={isDesktopScreen ? '1.5rem' : '1rem'}
+						inline
+					/>
+				</a>
+			</div>
+			<button
+				id="scroll-indicator"
+				aria-label="scroll-indicator-button"
+				class="bounce-animation button-visible text-right absolute z-10 bottom-2 right-2 text-secondary"
+				on:click={onScrollButtonClick}
+			>
+				<Icon
+					icon="material-symbols:arrow-circle-down"
+					width={isDesktopScreen ? '2rem' : '1.5rem'}
+					height={isDesktopScreen ? '2rem' : '1.5rem'}
+				/>
+			</button>
 		</div>
+		<Work {work} />
 	</div>
 </main>
 <Footer />
