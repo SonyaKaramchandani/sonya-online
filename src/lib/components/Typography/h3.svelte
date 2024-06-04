@@ -1,3 +1,3 @@
-<h3 class={'text-2xl md:text-[2.5vw] lg:leading-13 font-bold z-10'}>
+<h3 class={'md:leading-tight text-xl md:text-2xl lg:text-[2vw] z-10'}>
 	<slot />
 </h3>

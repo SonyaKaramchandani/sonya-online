@@ -21,8 +21,7 @@
 			normal: CustomParagraph,
 			h1: CustomHeading,
 			h2: CustomHeading,
-			h3: CustomHeading,
-			h4: CustomHeading
+			h3: CustomHeading
 		},
 		list: {
 			bullet: CustomUnorderedList,

@@ -11,6 +11,7 @@
 	import { smoothScroll } from '$lib/utils/smoothScroll';
 	import { MathUtils } from '$lib/utils/mathUtils';
 	import { getMousePos } from '$lib/utils/screenUtils';
+	import H3 from '$lib/components/Typography/h3.svelte';
 
 	const { theme } = resolveConfig(tailwindConfig);
 	// workaround for custom color typings
@@ -178,11 +179,11 @@
 			<div id="hero" class="z-2 mx-0 py-[6vh]">
 				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
 			</div>
-			<div id="bio" class="md:w-1/2 md:leading-tight text-lg md:text-2xl lg:text-[2vw]">
-				<p>
+			<div id="bio" class="md:w-1/2">
+				<H3>
 					I'm <span class="text-accent">Sonya</span>, a software developer passionate about UX and
 					GIS. I build engaging user-centric workflows that make an impact.
-				</p>
+				</H3>
 				<a href="/about" class="read-more-button text-sm lg:text-lg">
 					<span>More about me</span>
 					<IconifyIcon
