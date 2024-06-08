@@ -23,6 +23,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Sonya Karam | About</title>
+</svelte:head>
 <Cursor />
 <Header />
 <!-- TODO center all main content -->

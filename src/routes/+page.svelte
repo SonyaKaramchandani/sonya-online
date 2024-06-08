@@ -170,6 +170,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Sonya Karam | Work</title>
+</svelte:head>
 <Cursor />
 <Header />
 <main>
