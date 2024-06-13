@@ -82,7 +82,7 @@
 				class="icon-text-pair animated-underline"
 				target="_blank"
 				rel="noopener noreferrer"
-				href="mailto:hello@sonya.dev"
+				href="mailto:hello@sonyakaram.com"
 			>
 				<Icon icon="lucide:mail" />hello@sonyakaram.com
 			</a>
