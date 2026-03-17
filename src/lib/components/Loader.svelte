@@ -1,0 +1,22 @@
+<span class="loader border-2 border-background" />
+
+<style>
+	.loader {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		display: inline-block;
+		border-right: 3px solid transparent;
+		box-sizing: border-box;
+		animation: rotation 1s linear infinite;
+	}
+
+	@keyframes rotation {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>

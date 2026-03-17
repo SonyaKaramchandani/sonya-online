@@ -92,7 +92,7 @@ body {
 }
 @media only screen and (min-width: 768px) {
 	#page-container {
-		padding: 0 4em;
+		padding: 0 15rem;
 	}
 }
 
@@ -289,7 +289,7 @@ footer {
 .read-more-button {
 	display: inline-flex;
 	margin: 0.5rem 0;
-	padding: 7px 10px;
+	padding: 0.5rem 1rem;
 	color: theme('colors.background');
 	background-color: theme('colors.accent');
 	border: none;

@@ -34,7 +34,7 @@
 					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse max-lg:[&:not(:first-child)]:mt-[10vh] max-lg:[&(:first-child)]:mt-[5vh]"
 				>
 					{#if project.image}
-						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:odd:justify-end">
+						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:even:justify-end">
 							<img
 								src={`${project.image}?h=500&w=500&auto=format`}
 								alt={project.title}
@@ -48,7 +48,7 @@
 						<div id="project-info-inner" class="lg:group-odd:pl-[3.5vw] lg:group-even:pr-[3.5vw]">
 							<div
 								id="project-title-container"
-								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse items-center max-lg:my-4"
+								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse items-end max-lg:my-4"
 							>
 								<H2
 									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-fit max-lg:my-6"

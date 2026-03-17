@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Contact from '$lib/components/Contact.svelte';
 	import Cursor from '$lib/components/Cursor.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
@@ -47,13 +48,13 @@
 					</div>
 					<div
 						id="subheading-container"
-						class="w-full md:w-1/3 -bottom-5 absolute md:right-1/3 lg:right-1/2 text-secondary drop-shadow-md z-10"
+						class="w-full md:w-1/3 md:-bottom-5 -bottom-14 absolute md:left-1/3 lg:left-1/ text-secondary drop-shadow-md z-10"
 						data-aos="fade-left"
 					>
 						<H2>{about.subtitle}</H2>
 					</div>
 				</div>
-				<div id="description-container" class="py-10 md:ml-[25%]" data-aos="fade-left">
+				<div id="description-container" class="py-10">
 					{#if about.description}
 						<RichText value={about.description} />
 					{/if}
@@ -73,6 +74,7 @@
 							<span class="lg:text-[1.5vw] text-2xl">Download Resume</span>
 						</a>
 					{/if}
+					<Contact />
 				</div>
 			</div>
 		{/if}

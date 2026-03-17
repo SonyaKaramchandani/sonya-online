@@ -18,7 +18,8 @@ export default {
 			background: '#363348',
 			accent: '#D4922E',
 			primary: '#3D71A9',
-			secondary: '#C5C9AA'
+			secondary: '#C5C9AA',
+			error: '#FCA5A5'
 		}
 	},
 	plugins: []
