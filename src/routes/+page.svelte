@@ -79,31 +79,37 @@
 		updateFontSizeAndPadding();
 
 		const createBlotter = (textSize: number, canvasPadding: number) => {
-			const landingText = hero.firstElementChild!;
+				const landingTextString = 'Sonya Karam';
+				const landingFallback = document.getElementById('landing-fallback');
 
-			const text = new Blotter.Text(landingText?.innerHTML, {
-				family: "'Pangaia', serif",
-				size: textSize,
-				weight: 700,
-				fill: colors.text,
-				paddingLeft: canvasPadding,
-				paddingRight: canvasPadding
-			});
+				// Remove any previous blotter output (but keep the hidden fallback span in place).
+				Array.from(hero.children).forEach((child) => {
+					if (child.id !== 'landing-fallback') {
+						child.remove();
+					}
+				});
 
-			if (document.contains(landingText)) {
-				hero.removeChild(landingText);
-			}
+				const text = new Blotter.Text(landingTextString, {
+					family: "'Pangaia', serif",
+					size: textSize,
+					weight: 700,
+					fill: colors.text,
+					paddingLeft: canvasPadding,
+					paddingRight: canvasPadding
+				});
 
-			const material = new Blotter.LiquidDistortMaterial();
-			material.uniforms.uVolatility.value = 0;
+				const material = new Blotter.LiquidDistortMaterial();
+				material.uniforms.uVolatility.value = 0;
 
-			const blotter = new Blotter(material, {
-				texts: text
-			});
+				const blotter = new Blotter(material, {
+					texts: text
+				});
 
-			const scope = blotter.forText(text);
-			scope.appendTo(hero);
+				const scope = blotter.forText(text);
+				scope.appendTo(hero);
 
+				// Once blotter is applied, remove the plaintext fallback so it doesn't get rendered.
+				landingFallback?.remove();
 			let lastMousePosition = { x: winSize.width / 2, y: winSize.height / 2 };
 			let volatility = 0;
 
@@ -160,7 +166,23 @@
 					updateFontSizeAndPadding();
 
 					requestAnimationFrame(() => {
-						createBlotter(fontSize, padding);
+						try {
+							try {
+				createBlotter(fontSize, padding);
+			} catch (err) {
+				const fallback = document.getElementById('landing-fallback');
+				if (fallback) {
+					fallback.classList.remove('hidden');
+				}
+				console.warn('Blotter failed to initialize', err);
+			}
+						} catch (err) {
+							const fallback = document.getElementById('landing-fallback');
+							if (fallback) {
+								fallback.classList.remove('hidden');
+							}
+							console.warn('Blotter failed to initialize', err);
+						}
 					});
 				}, 200);
 			}
@@ -180,7 +202,16 @@
 		<div id="background-topo" />
 		<div id="landing" class="h-screen flex flex-col justify-center">
 			<div id="hero" class="z-2 mx-0 py-[6vh]">
-				<span class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</span>
+				<noscript>
+					<div class="initial-landing-text font-serif text-[12vw] font-black">Sonya Karam</div>
+				</noscript>
+				<span
+					id="landing-fallback"
+					class="initial-landing-text font-serif text-[12vw] font-black hidden"
+					aria-hidden="true"
+				>
+					Sonya Karam
+				</span>
 			</div>
 			<div id="bio" class="md:w-1/2">
 				<H3>
