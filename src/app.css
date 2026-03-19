@@ -306,3 +306,67 @@ footer {
 	background-color: theme('colors.secondary');
 	opacity: 75;
 }
+
+/* Project grid layout improvements */
+@media (min-width: 1024px) {
+	#project-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3.5vw;
+		align-items: start;
+		margin: 6rem auto;
+	}
+
+	/* Alternate layout for odd items (image on left) */
+	#project-container:nth-child(odd) > #project-image {
+		order: 1;
+	}
+
+	#project-container:nth-child(odd) > #project-info {
+		order: 2;
+	}
+
+	/* Alternate layout for even items (image on right) */
+	#project-container:nth-child(even) > #project-image {
+		order: 2;
+	}
+
+	#project-container:nth-child(even) > #project-info {
+		order: 1;
+	}
+
+	#project-image {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+	}
+
+	#project-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+}
+
+/* Tech stack grid - consistent alignment across breakpoints */
+#text-stack-container {
+	display: grid;
+	gap: 1.5rem;
+	align-items: start;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+}
+
+@media (max-width: 768px) {
+	#text-stack-container {
+		grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+		gap: 1rem;
+	}
+}
+
+@media (min-width: 769px) {
+	#text-stack-container {
+		grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+		gap: 1.5rem;
+	}
+}

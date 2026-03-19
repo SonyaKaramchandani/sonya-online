@@ -31,10 +31,10 @@
 				<article
 					id="project-container"
 					data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
-					class="group lg:flex items-center lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh] mx-auto even:flex-row-reverse max-lg:[&:not(:first-child)]:mt-[10vh] max-lg:[&(:first-child)]:mt-[5vh]"
+					class="group max-lg:[&:not(:first-child)]:mt-[10vh] max-lg:[&(:first-child)]:mt-[5vh] lg:[&:not(:first-child)]:mt-[20vh] lg:[&(:first-child)]:mt-[10vh]"
 				>
 					{#if project.image}
-						<div id="project-image" class="lg:w-[37.5%] lg:flex lg:even:justify-end">
+						<div id="project-image" class="lg:flex lg:justify-center">
 							<img
 								src={`${project.image}?h=500&w=500&auto=format`}
 								alt={project.title}
@@ -44,30 +44,22 @@
 							/>
 						</div>
 					{/if}
-					<div id="project-info" class="lg:flex z-4 lg:w-[50%] lg:group-even:justify-end">
-						<div id="project-info-inner" class="lg:group-odd:pl-[3.5vw] lg:group-even:pr-[3.5vw]">
-							<div
-								id="project-title-container"
-								class="lg:flex flex-nowrap relative w-full group-even:flex-row-reverse items-end max-lg:my-4"
-							>
-								<H2
-									class="text-secondary lg:group-odd:mr-10 lg:group-even:ml-10 lg:w-fit max-lg:my-6"
-								>
+					<div id="project-info" class="z-4 lg:flex lg:flex-col lg:justify-start">
+						<div id="project-info-inner">
+							<div id="project-title-container" class="relative w-full max-lg:my-4 lg:space-y-4">
+								<H2 class="text-secondary max-lg:my-6">
 									{project.title}
 								</H2>
-								<div
-									id="text-stack-container"
-									class="flex gap-4 items-center text-secondary flex-auto lg:group-even:flex-row-reverse flex-wrap max-lg:my-4"
-								>
+								<div id="text-stack-container" class="text-secondary max-lg:my-4">
 									{#each project.techstack as tech}
 										{#if tech.icon}
-											<div class="flex flex-col items-center">
+											<div class="flex flex-col items-center justify-start">
 												<SvgIcon
 													data={tech.icon}
 													width={isDesktopScreen ? '3rem' : '2rem'}
 													height={isDesktopScreen ? '3rem' : '2rem'}
 												/>
-												<Caption class="mt-2">{tech.name}</Caption>
+												<Caption class="mt-2 text-center">{tech.name}</Caption>
 											</div>
 										{/if}
 									{/each}
