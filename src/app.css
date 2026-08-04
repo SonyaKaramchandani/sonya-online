@@ -259,6 +259,20 @@ footer {
 	visibility: hidden;
 }
 
+.tier-card input[type='radio']:checked + label {
+	border-color: theme('colors.accent');
+	background-color: rgba(239, 129, 58, 0.08);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.tier-card label {
+	cursor: pointer;
+}
+
+.tier-card label:hover {
+	transform: translateY(-2px);
+}
+
 .bounce-animation {
 	animation: bounce 2.5s cubic-bezier(0.79, 0.14, 0.15, 0.86) 2s infinite;
 	animation-play-state: running;

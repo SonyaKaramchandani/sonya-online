@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
 	import Loader from './Loader.svelte';
+	import InputField from '$lib/components/InputField.svelte';
+	import FormField from '$lib/components/FormField.svelte';
+	import Toast from '$lib/components/Toast.svelte';
 
 	const WEB3FORMS_ACCESS_KEY = env.PUBLIC_WEB3FORMS_ACCESS_KEY;
 
@@ -12,6 +15,10 @@
 	};
 
 	let formElement: HTMLFormElement;
+
+	const dismissToast = () => {
+		formStatus = { ...formStatus, submitted: false };
+	};
 
 	const handleSubmit = async (data: SubmitEvent) => {
 		formStatus = {
@@ -34,8 +41,8 @@
 			});
 
 			const result = await response.json();
-			if (result.success) {
-				console.log(result);
+
+			if (response.ok && result.success) {
 				formStatus = {
 					submitting: false,
 					submitted: true,
@@ -47,14 +54,25 @@
 					formElement.reset();
 				}
 			} else {
-				throw new Error(result.message || 'Something went wrong');
+				// Server responded, but rejected the submission — don't clear the form.
+				formStatus = {
+					submitting: false,
+					submitted: true,
+					error: true,
+					message:
+						result.message || 'Something went wrong. Please check your details and try again.'
+				};
 			}
-		} catch (error) {
+		} catch (err) {
+			// Network failure or unexpected error — don't clear the form.
+			const detail = err instanceof Error ? err.message : '';
 			formStatus = {
 				submitting: false,
 				submitted: true,
 				error: true,
-				message: 'Something went wrong. Please try again later.'
+				message: detail
+					? `Something went wrong: ${detail}. Please try again.`
+					: 'Something went wrong. Please try again later.'
 			};
 		}
 	};
@@ -63,43 +81,12 @@
 <div class="md:p-20 mt-6">
 	<h1 class="text-4xl font-serif font-semibold mb-6">Get In Touch</h1>
 	<form bind:this={formElement} on:submit|preventDefault={handleSubmit} class="space-y-4">
-		<div>
-			<input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-			<label for="name" class="block mb-1 font-medium">Name</label>
-			<input
-				type="text"
-				name="name"
-				required
-				class="w-full p-2 rounded focus:ring-2 focus:outline-none bg-text/5 text-text border border-secondary"
-			/>
-		</div>
+		<input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
 
-		<div>
-			<label for="email" class="block mb-1 font-medium">Email</label>
-			<input
-				type="email"
-				name="email"
-				required
-				class="w-full p-2 rounded focus:ring-2 focus:outline-none bg-text/5 text-text border border-secondary"
-			/>
-		</div>
+		<InputField id="name" label="Name" name="name" required={true} />
+		<InputField id="email" label="Email" type="email" name="email" required={true} />
+		<FormField id="message" label="Message" name="message" required={true} controlType="textarea" />
 
-		<div>
-			<label for="message" class="block mb-1 font-medium">Message</label>
-			<textarea
-				name="message"
-				required
-				rows="4"
-				class="w-full p-2 rounded focus:ring-2 focus:outline-none bg-text/5 text-text border border-secondary"
-			></textarea>
-		</div>
-		{#if formStatus.submitted}
-			<div
-				class={`p-4 mb-6 rounded text-background ${formStatus.error ? 'bg-error' : 'bg-secondary'}`}
-			>
-				{formStatus.message}
-			</div>
-		{/if}
 		<button
 			type="submit"
 			class="read-more-button text-sm font-bold lg:text-lg"
@@ -116,3 +103,10 @@
 		</button>
 	</form>
 </div>
+
+<Toast
+	visible={formStatus.submitted}
+	message={formStatus.message}
+	error={formStatus.error}
+	onClose={dismissToast}
+/>
