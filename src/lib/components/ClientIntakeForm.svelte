@@ -400,7 +400,7 @@
 						name="Package tier"
 						value="Custom"
 						title="Custom"
-						price="$8,000+"
+						price="Let's chat"
 						fit="Fully branded, e-commerce, or complex functionality."
 						features={[
 							'Custom scope & strategy',
@@ -410,6 +410,11 @@
 						]}
 					/>
 				</div>
+				<p class="text-xs m-2 text-text/80 md:mt-2">
+					Please note, that recurring costs like retainers, and hosting fees, domain registration,
+					and third-party services are not included in these prices.<br /> This is meant to provide a
+					general pricing structure based on the features and level of support needed.
+				</p>
 			</fieldset>
 			{#if errors.packageTier}
 				<p class="mt-2 text-xs uppercase tracking-[0.2em] text-error">{errors.packageTier}</p>
