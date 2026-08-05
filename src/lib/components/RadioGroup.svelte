@@ -36,7 +36,7 @@
 				{required}
 				aria-invalid={error ? 'true' : 'false'}
 				class:border-error={error}
-				class={`w-full max-w-[26rem] rounded-xl border border-text/25 bg-background/60 px-4 py-3 text-text outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40 ${selectClass}`.trim()}
+				class={`w-full rounded-xl border border-text/25 bg-background/60 px-4 py-3 text-text outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/40 ${selectClass}`.trim()}
 			>
 				<option value="">Select one</option>
 				{#each options as option}

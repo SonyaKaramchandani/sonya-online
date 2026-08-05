@@ -17,7 +17,7 @@
 	{/if}
 
 	{#if columns === '2'}
-		<div class={`grid gap-4 md:grid-cols-2 md:items-start ${gridClass}`.trim()}>
+		<div class={`flex flex-col md:grid gap-4 md:grid-cols-2 md:items-end ${gridClass}`.trim()}>
 			<slot />
 		</div>
 	{:else}

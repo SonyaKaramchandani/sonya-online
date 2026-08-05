@@ -230,9 +230,10 @@
 			<RadioGroup
 				legend="Country"
 				name="Country"
+				widthClass="col-span-2"
 				required={true}
 				error={errors.country}
-				hint="I currently work with clients in Canada and the United States."
+				hint="I currently only work with clients in Canada and the United States."
 				options={[
 					{ label: 'Canada', value: 'Canada' },
 					{ label: 'United States', value: 'United States' }
@@ -275,7 +276,7 @@
 
 			<InputField
 				id="pages"
-				label="What pages do you want?"
+				label="Web pages needed"
 				name="Page list"
 				required={true}
 				placeholder="Home, about, contact, services, faq, etc."
